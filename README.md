@@ -1,2 +1,28 @@
-# SmartShelf
-SmartShelf is a console-based Java application that simulates inventory and sales management for a small shop with two main categories: Grocery and Electronics. It implements user authentication (signup and login), admin dashboard functionalities.
+# SmartShelf Console Application
+
+SmartShelf is a console-based Java shop management system for Grocery and Electronics. It supports both Admin and User roles, enabling inventory management, purchase flow, and reporting in a colorful console interface.
+
+## Features
+
+- **Admin Dashboard**
+  - View revenue and reports.
+  - Put/remove shelves under maintenance.
+
+- **User Functions**
+  - Signup and login with OTP.
+  - Wallet and bank balance management.
+  - Purchase items, cart management, invoice generation with multiple payment options.
+  - Address entry for delivery.
+
+- **Inventory Management**
+  - Auto-restocking for low-stock items.
+  - Item expiry tracking.
+
+## Technologies
+
+- Java (OOP concepts)
+- Console-based UI with ANSI colors
+
+## Getting Started
+
+1. **Clone the repository:**
