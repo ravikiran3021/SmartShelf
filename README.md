@@ -17,6 +17,16 @@ SmartShelf is a console-based Java shop management system for Grocery and Electr
 - **Inventory Management**
   - Auto-restocking for low-stock items.
   - Item expiry tracking.
+ 
+  
+## Compile the program:
+    
+    javac SmartShelf.java
+
+## Run the application:
+
+    java SmartShelf
+
 
 ## Technologies
 
