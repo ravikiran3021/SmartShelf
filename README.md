@@ -23,6 +23,3 @@ SmartShelf is a console-based Java shop management system for Grocery and Electr
 - Java (OOP concepts)
 - Console-based UI with ANSI colors
 
-## Getting Started
-
-1. **Clone the repository:**
