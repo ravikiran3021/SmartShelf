@@ -205,6 +205,38 @@ class User
         this.electronicsShelf = electronicsShelf;
     }
 
+    Boolean isValidPassword(String password)
+    {
+        if(savedPassword.length() >= 8)
+        {
+            if(!savedPassword.matches(".*[!@#$%^&*()].*"))
+            {
+                System.out.println(ConsoleColors.RED + "Password must contain at least one special character (!@#$%^&*())." + ConsoleColors.RESET);
+                return false;
+            }
+            else if(!savedPassword.matches(".*[0-9].*"))
+            {
+                System.out.println(ConsoleColors.RED + "Password must contain at least one digit." + ConsoleColors.RESET);
+                return false;
+            }
+            else if(!savedPassword.matches(".*[a-z].*"))
+            {
+                System.out.println(ConsoleColors.RED + "Password must contain at least one lowercase letter." + ConsoleColors.RESET);
+                return false;
+            }
+            else if(!savedPassword.matches(".*[A-Z].*"))
+            {
+                System.out.println(ConsoleColors.RED + "Password must contain at least one uppercase letter." + ConsoleColors.RESET);
+                return false;
+            }
+        }
+        else
+        {
+            System.out.println(ConsoleColors.RED + "Password must be at least 8 characters long." + ConsoleColors.RESET);
+            return false;
+        }
+        return true;
+    }
     void signup() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- User Signup ---" + ConsoleColors.RESET);
@@ -212,32 +244,37 @@ class User
         savedName = sc.next();
         System.out.print("Enter username: ");
         savedUsername = sc.next();
+        System.out.println(ConsoleColors.YELLOW + "Password must be at least 8 characters long, contain at least one digit, one lowercase letter, one uppercase letter, and one special character (!@#$%^&*())." + ConsoleColors.RESET);
         System.out.print("Enter password: ");
         savedPassword = sc.next();
-        System.out.print("Enter mobile number: ");
-        savedMobile = sc.next();
-        long mobileNumber = Long.parseLong(savedMobile); // Convert mobile number to long for validation
-        if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
+        if(isValidPassword(savedPassword))
         {
-                admin.otpGenerate();
-                System.out.print("Enter OTP : ");
-                int enteredOtp = sc.nextInt();
-                if(enteredOtp==admin.getOtp())
-                {
-                    // walletBalance = 20000;
-                	System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "Invalid OTP !" + ConsoleColors.RESET);
-                    //signup();
-                    return;
-                }
-        }
-        else
-        {
-            System.out.println(ConsoleColors.RED + "Invalid Mobile Number! Please enter a Valid Mobile Number." + ConsoleColors.RESET);
-            return;
+            System.out.print("Enter mobile number: ");
+            savedMobile = sc.next();
+            long mobileNumber = Long.parseLong(savedMobile); // Convert mobile number to long for validation
+            if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
+            {
+                    admin.otpGenerate();
+                    System.out.print("Enter OTP : ");
+                    int enteredOtp = sc.nextInt();
+                    if(enteredOtp==admin.getOtp())
+                    {
+                        // walletBalance = 20000;
+                        System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
+                    }
+                    else
+                    {
+                        System.out.println(ConsoleColors.RED + "Invalid OTP !" + ConsoleColors.RESET);
+                        //signup();
+                        return;
+                    }
+            }
+            else
+            {
+                System.out.println(ConsoleColors.RED + "Invalid Mobile Number! Please enter a Valid Mobile Number." + ConsoleColors.RESET);
+                signup();
+                //return;
+            }
         }
     }
 
@@ -290,19 +327,23 @@ class User
                 {
                     if(mobno.equals(savedMobile))
                     {
+                        System.out.println(ConsoleColors.YELLOW + "Password must be at least 8 characters long, contain at least one digit, one lowercase letter, one uppercase letter, and one special character (!@#$%^&*())." + ConsoleColors.RESET);
                         System.out.print("Enter your New Password : ");
                         savedPassword = sc.next();
-                        System.out.print("Confirm Password : ");
-                        String confirmpassword = sc.next();
-                        if(savedPassword.equals(confirmpassword))
+                        if(isValidPassword(savedPassword))
                         {
-                            System.out.println(ConsoleColors.GREEN + "Password Updated Succesfully...." + ConsoleColors.RESET);
-                            login();
-                        }
-                        else
-                        {
-                            System.out.println(ConsoleColors.RED + "New Password & Confirm Password Mismatched...!" + ConsoleColors.RESET);
-                            return;
+                            System.out.print("Confirm Password : ");
+                            String confirmpassword = sc.next();
+                            if(savedPassword.equals(confirmpassword))
+                            {
+                                System.out.println(ConsoleColors.GREEN + "Password Updated Succesfully...." + ConsoleColors.RESET);
+                                login();
+                            }
+                            else
+                            {
+                                System.out.println(ConsoleColors.RED + "New Password & Confirm Password Mismatched...!" + ConsoleColors.RESET);
+                                return;
+                            }
                         }
                     }
                     else
@@ -343,12 +384,10 @@ class User
             System.out.println("3. Shop for Items");
             System.out.println("4. View Cart");
             System.out.println("5. Generate Invoice & Pay Bill");
-            //System.out.println("6. Return an Item");
-            // System.out.println("6. Pay Bill");
             System.out.println("7. Logout");
             System.out.print("Enter option: ");
             choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
 
             switch (choice) 
             {
@@ -367,12 +406,6 @@ class User
                 case 5:
                     generateInvoice();
                     break;
-                // case 6:
-                //     returnItem();
-                //     break;
-                // case 6:
-                //     payBill();
-                //     break;
                 case 7:
                     System.out.println("Logging out...");
                     return;
@@ -393,7 +426,7 @@ class User
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Add Money to Wallet ---" + ConsoleColors.RESET);
         System.out.print("Enter amount to add from your bank account: ");
         double amount = sc.nextDouble();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
         if (amount <= 0) 
         {
@@ -433,7 +466,7 @@ class User
         {
             case 1:
                 groceryShelf.displayItems();
-                System.out.print("Enter item name to purchase (Rice/Cooking Oil): ");
+                System.out.print("Enter item name to purchase : ");
                 String groceryItem = sc.nextLine();
                 Item grocerySelectedItem = groceryShelf.selectItemByName(groceryItem);
                 if (grocerySelectedItem != null) 
@@ -471,7 +504,7 @@ class User
                 break;
             case 2:
                 electronicsShelf.displayItems();
-                System.out.print("Enter item name to purchase (Headphones/Charger): ");
+                System.out.print("Enter item name to purchase : ");
                 String electronicsItem = sc.nextLine();
                 Item electronicsSelectedItem = electronicsShelf.selectItemByName(electronicsItem);
                 if (electronicsSelectedItem != null) 
@@ -624,13 +657,13 @@ class Item
         {
             int restockQty = 10;
             double restockCost = restockQty * (this.price - this.restockprice);
-            if (AdminRevenue.getRevenue() >= restockCost) 
+            if (AdminRevenue.getAdminFunds() >= restockCost) 
             {
-                AdminRevenue.totalRevenue-=restockCost;
+                AdminRevenue.adminFunds-=restockCost;
                 quantity += restockQty;
                 totalItemsInStock += restockQty;
                 //     System.out.println(ConsoleColors.YELLOW + "Restocking " + restockQty + " more of: " + name + ConsoleColors.RESET);
-                //     System.out.println(ConsoleColors.PURPLE + "Cost of restocking (" + restockCost + ") deducted from Admin Total Revenue." + ConsoleColors.RESET);
+                //     System.out.println(ConsoleColors.PURPLE + "Cost of restocking (" + restockCost + ") deducted from Admin Funds." + ConsoleColors.RESET);
                 //     System.out.println(ConsoleColors.GREEN + "New quantity for " + name + " is now: " + quantity + ConsoleColors.RESET);
             } 
             // else 
@@ -664,28 +697,23 @@ class Invoice
     
     static void takeAddress()
     {
-        String countryname;
-        String statename;
-        String cityname;
-        String landmark;
-        String doorNo;
             
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n ----- Add your Address -----  " + ConsoleColors.RESET);
             
         System.out.print("Enter your Country Name : ");
-        countryname = sc.next();
+        String countryname = sc.next();
             
         System.out.print("Enter your State Name : ");
-        statename = sc.next();
+        String statename = sc.next();
             
         System.out.print("Enter your City Name : ");
-        cityname = sc.next();
+        String cityname = sc.next();
             
         System.out.print("Enter your Landmark Name : ");
-        landmark = sc.next();
+        String landmark = sc.next();
             
         System.out.print("Enter your Door Number (or) Flat Number Name : ");
-        doorNo = sc.next();
+        String doorNo = sc.next();
         
     }
     
@@ -767,7 +795,7 @@ class Invoice
                 System.out.println(ConsoleColors.RED + "Invalid choice. Returning to user menu." + ConsoleColors.RESET);
                 return;
         }
-        System.out.println("Handling Fee (" + paymentMethod + "): " + handlingFee);
+        System.out.println("Platform Fee (" + paymentMethod + "): " + handlingFee);
         double finalAmount = total + handlingFee;
         System.out.println(ConsoleColors.BOLD + "FINAL AMOUNT TO PAY: " + finalAmount + ConsoleColors.RESET);
         System.out.println("------------------------------------");
@@ -853,7 +881,7 @@ class Invoice
 class AdminRevenue 
 {
     static double totalRevenue = 0.0;
-    //static double adminFunds = 50000.0;
+    static double adminFunds = 50000.0;
 
     static void addRevenue(double amount) 
     {
@@ -864,14 +892,14 @@ class AdminRevenue
     {
         return totalRevenue;
     }
-    // static void deductForRestock(double cost) 
-    // {
-    //     adminFunds -= cost;
-    // }
-    // static double getAdminFunds() 
-    // {
-    //     return adminFunds;
-    // }
+    static void deductForRestock(double cost) 
+    {
+        adminFunds -= cost;
+    }
+    static double getAdminFunds() 
+    {
+        return adminFunds;
+    }
 }
 
 abstract class Shelf 
@@ -903,6 +931,7 @@ class GroceryShelf extends Shelf
 {
     private Item rice = new Item("Rice", 50, 10,"15-05-2026", 5);
     private Item oil = new Item("Cooking Oil", 120, 13,"09-10-2025", 10);
+    private Item sugar = new Item("Sugar", 40, 20,"01-12-2025", 5);
     Item getRice() 
     { 
         return rice; 
@@ -910,6 +939,10 @@ class GroceryShelf extends Shelf
     Item getOil()  
     { 
         return oil; 
+    }
+    Item getSugar() 
+    { 
+        return sugar; 
     }
 
     GroceryShelf() 
@@ -930,6 +963,7 @@ class GroceryShelf extends Shelf
         System.out.println("----------------------------------------------------------");
         rice.displayItem();
         oil.displayItem();
+        sugar.displayItem();
     }
 
     @Override
@@ -948,6 +982,10 @@ class GroceryShelf extends Shelf
         {
             return oil;
         } 
+        else if (name.equalsIgnoreCase("Sugar")) 
+        {
+            return sugar;
+        }
         else 
         {
             System.out.println(ConsoleColors.RED + "Item not found." + ConsoleColors.RESET);
@@ -960,6 +998,7 @@ class ElectronicsShelf extends Shelf
 {
     private Item headphones = new Item("Headphones", 500, 9,"30-09-2029",65);
     private Item charger = new Item("Charger", 300, 20,"23-08-2030", 60);
+    private Item powerBank = new Item("Power Bank", 800, 15,"15-12-2028", 70);
     
     Item getHeadphones() 
     { 
@@ -968,6 +1007,10 @@ class ElectronicsShelf extends Shelf
     Item getCharger()    
     {
         return charger; 
+    }
+    Item getPowerBank() 
+    { 
+        return powerBank; 
     }
     
     ElectronicsShelf() 
@@ -988,6 +1031,7 @@ class ElectronicsShelf extends Shelf
         System.out.println("----------------------------------------------------------");
         headphones.displayItem();
         charger.displayItem();
+        powerBank.displayItem();
     }
 
     @Override
@@ -1006,6 +1050,10 @@ class ElectronicsShelf extends Shelf
         else if (name.equalsIgnoreCase("Charger")) 
         {
             return charger;
+        }
+        else if (name.equalsIgnoreCase("Power Bank"))   
+        {
+            return powerBank;
         }
         else 
         {
@@ -1033,7 +1081,7 @@ class Smartshelf
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
 
             switch (choice) 
             {
