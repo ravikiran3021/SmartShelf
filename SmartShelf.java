@@ -114,6 +114,7 @@ class Admin
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Admin Revenue ---" + ConsoleColors.RESET);
         System.out.println("Total revenue generated : " + AdminRevenue.getRevenue());
+        System.out.println("Admin Wallet : " + AdminRevenue.getAdminFunds());
     }
     
     void viewReport() 
