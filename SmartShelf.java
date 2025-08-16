@@ -14,8 +14,6 @@ class Smartshelf
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
-            sc.nextLine();
-
             switch (choice) 
             {
                 case 1:
