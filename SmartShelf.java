@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class Smartshelf 
 {
     public static void main(String[] args) 
@@ -6,7 +7,7 @@ class Smartshelf
         int choice;
         do
         {
-            System.out.println(ConsoleColors.BLUE + ConsoleColors.BOLD + "\nWelcome to SmartShelf!" + ConsoleColors.RESET);
+            System.out.println("\nWelcome to SmartShelf!");
             System.out.println("1. Admin Login");
             System.out.println("2. User Signup");
             System.out.println("3. User Login");
@@ -27,10 +28,10 @@ class Smartshelf
                     user.login();
                     break;
                 case 4:
-                    System.out.println(ConsoleColors.GREEN + ConsoleColors.BOLD + "Thank You for using SmartShelf!" + ConsoleColors.RESET);
+                    System.out.println("Thank You for using SmartShelf!");
                     return;
                 default:
-                    System.out.println(ConsoleColors.RED + "Invalid Option. Please try again." + ConsoleColors.RESET);
+                    System.out.println("Invalid Option. Please try again.");
             }
         }while(choice !=4);
     }
