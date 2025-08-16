@@ -16,7 +16,6 @@ SmartShelf is a console-based Java Mini Project that enables shop management sys
 
 - **Inventory Management**
   - Auto-restocking for low-stock items.
-  - Item expiry tracking.
  
   
 ## Compile the program:
