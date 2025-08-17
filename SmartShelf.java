@@ -297,29 +297,35 @@ class User
         return true;
     }
 
-     boolean otpValidation()
+     boolean otpValidation() 
     {
-        int i=1;
+
+        int attempts = 3; 
         boolean otpVerified = false;
-        while(i<=3)
+
+        for (int i = 1; i <= attempts; i++) 
         {
             System.out.print("Enter OTP: ");
             int enteredOtp = sc.nextInt();
-            if(enteredOtp == admin.getOtp())
+
+            if (enteredOtp == admin.getOtp()) 
             {
                 System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
                 otpVerified = true;
                 break;
-            }
-            else
+            } 
+            else 
             {
                 System.out.println(ConsoleColors.RED + "Invalid OTP! Please try again." + ConsoleColors.RESET);
-            }
-            System.out.println(ConsoleColors.YELLOW + (4-i) + " attempts left." + ConsoleColors.RESET);
-            if(i == 4)
-            {
-                System.out.println("Too many attempts! Returning to user menu.");
-                showUserMenu();
+                int attemptsLeft = attempts - i;
+                if (attemptsLeft > 0) 
+                {
+                    System.out.println(ConsoleColors.YELLOW + attemptsLeft + " attempts left." + ConsoleColors.RESET);
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Too many attempts!" + ConsoleColors.RESET);
+                }
             }
         }
         return otpVerified;
@@ -352,7 +358,7 @@ class User
         if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
         {
             admin.otpGenerate();
-            if(otpValidation());
+            if(otpValidation())
             {
                 System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
                 isLoggedIn = true;
