@@ -743,7 +743,7 @@ class User
         Invoice.generate(this, cartItem1, qty1, cartItem2, qty2, cartItem3, qty3, cartItem4, qty4);
     }
 
-    void removeItemFromCart()
+   void removeItemFromCart()
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Remove Items from Cart ---" + ConsoleColors.RESET);
         if (cartItem1 == null && cartItem2 == null && cartItem3 == null && cartItem4 == null)
@@ -763,6 +763,8 @@ class User
             System.out.println("3. " + cartItem3.getName() + " x" + qty3);
         if (cartItem4 != null)
             System.out.println("4. " + cartItem4.getName() + " x" + qty4);
+        System.out.println();
+        System.out.println(ConsoleColors.ITALIC + "------ Options -----" + ConsoleColors.RESET);
         System.out.println("1. Remove Item 1\n 2. Remove Item 2\n 3. Remove Item 3\n 4. Remove Item 4\n 5. Clear Cart\n 6. Back to User Menu");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
@@ -798,11 +800,12 @@ class User
                         case 2:
                             System.out.print("Are you sure you want to remove " + cartItem1.getName() + " from cart? (y/n)");
                             char confirm = sc.next().charAt(0);
+                            String removedname1 = cartItem1.getName();
                             if (confirm == 'y' || confirm == 'Y')
                             {
                                 cartItem1 = null;
                                 qty1 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + cartItem1.getName() + " from cart Successfully." + ConsoleColors.RESET);
+                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname1 + " from cart Successfully." + ConsoleColors.RESET);
                             }
                             else if (confirm == 'n' || confirm == 'N')
                             {
@@ -825,6 +828,7 @@ class User
                     System.out.println(ConsoleColors.RED + "No Item 1 in cart to remove." + ConsoleColors.RESET);
                     showUserMenu();
                 }
+                break;
             case 2:
                 if (cartItem2 != null)
                 {
@@ -855,11 +859,12 @@ class User
                         case 2:
                             System.out.print("Are you sure you want to remove " + cartItem2.getName() + " from cart? (y/n)");
                             char confirm2 = sc.next().charAt(0);
+                            String removedname2 = cartItem2.getName();
                             if (confirm2 == 'y' || confirm2 == 'Y')
                             {
                                 cartItem2 = null;
                                 qty2 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + cartItem2.getName() + " from cart Successfully." + ConsoleColors.RESET);
+                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname2 + " from cart Successfully." + ConsoleColors.RESET);
                             }
                             else if (confirm2 == 'n' || confirm2 == 'N')
                             {
@@ -882,6 +887,7 @@ class User
                     System.out.println(ConsoleColors.RED + "No Item 2 in cart to remove." + ConsoleColors.RESET);
                     showUserMenu();
                 }
+                break;
             case 3:
                 if (cartItem3 != null)
                 {
@@ -912,11 +918,12 @@ class User
                         case 2:
                             System.out.print("Are you sure you want to remove " + cartItem3.getName() + " from cart? (y/n)");
                             char confirm3 = sc.next().charAt(0);
+                            String removedname3 = cartItem3.getName();
                             if (confirm3 == 'y' || confirm3 == 'Y')
                             {
                                 cartItem3 = null;
                                 qty3 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + cartItem3.getName() + " from cart Successfully." + ConsoleColors.RESET);  
+                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname3 + " from cart Successfully." + ConsoleColors.RESET);  
                             }
                             else if (confirm3 == 'n' || confirm3 == 'N')
                             {
@@ -939,6 +946,7 @@ class User
                     System.out.println(ConsoleColors.RED + "No Item 3 in cart to remove." + ConsoleColors.RESET);
                     showUserMenu();
                 }
+                break;
             case 4:
                 if (cartItem4 != null)
                 {
@@ -969,11 +977,12 @@ class User
                         case 2:
                             System.out.print("Are you sure you want to remove " + cartItem4.getName() + " from cart? (y/n)");
                             char confirm4 = sc.next().charAt(0);
+                            String removedname4 = cartItem4.getName();
                             if (confirm4 == 'y' || confirm4 == 'Y')
                             {
                                 cartItem4 = null;
                                 qty4 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + cartItem4.getName() + " from cart Successfully." + ConsoleColors.RESET);
+                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname4 + " from cart Successfully." + ConsoleColors.RESET);
                             }
                             else if (confirm4 == 'n' || confirm4 == 'N')
                             {
@@ -996,6 +1005,7 @@ class User
                     System.out.println(ConsoleColors.RED + "No Item 4 in cart to remove." + ConsoleColors.RESET);
                     showUserMenu();
                 }
+                break;
             case 5:
                 clearCart();
                 System.out.println(ConsoleColors.GREEN + "Cart cleared successfully." + ConsoleColors.RESET);
