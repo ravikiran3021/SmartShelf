@@ -537,38 +537,55 @@ class User
                     System.out.print("Enter quantity: ");
                     int groceryQty = sc.nextInt();
                     sc.nextLine();
+                    
                     // Check if item already in cart
-
-                    if (cartItem1 != null && cartItem1.getName().equalsIgnoreCase(grocerySelectedItem.getName())) 
+                    
+                    if (cartItem1 != null && cartItem1.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    { 
                         qty1 += groceryQty; 
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem2 != null && cartItem2.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    {
                         qty2 += groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem3 != null && cartItem3.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    {
                         qty3 += groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem4 != null && cartItem4.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    {
                         qty4 += groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem1 == null) 
                     {
                         cartItem1 = grocerySelectedItem;
                         qty1 = groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }   
                     else if (cartItem2 == null)
                     {
                         cartItem2 = grocerySelectedItem;
                         qty2 = groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 == null)
                     {
                         cartItem3 = grocerySelectedItem;
                         qty3 = groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = grocerySelectedItem;
                         qty4 = groceryQty;
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }
                     else 
-                        System.out.println(ConsoleColors.YELLOW + "Cart is full!" + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.YELLOW + "OOPS! Cart is full!" + ConsoleColors.RESET);
                 }
                 break;
             case 2:
@@ -585,35 +602,51 @@ class User
                     // Check if item already in cart
 
                     if (cartItem1 != null && cartItem1.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    {
                         qty1 += electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem2 != null && cartItem2.getName().equalsIgnoreCase(electronicsSelectedItem.getName())) 
+                    {
                         qty2 += electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem3 != null && cartItem3.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    {
                         qty3 += electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem4 != null && cartItem4.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    {
                         qty4 += electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
                     else if (cartItem1 == null) 
                     {
                         cartItem1 = electronicsSelectedItem;
                         qty1 = electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     } 
                     else if (cartItem2 == null)
                     { 
                         cartItem2 = electronicsSelectedItem;
                         qty2 = electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     } 
                     else if (cartItem3 == null)
                     {
                         cartItem3 = electronicsSelectedItem;
                         qty3 = electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = electronicsSelectedItem;
                         qty4 = electronicsQty;
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
                     }
                     else 
-                        System.out.println(ConsoleColors.YELLOW + "Cart is full!" + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.YELLOW + "OOPS! Cart is full!" + ConsoleColors.RESET);
                 }
                 break;
             case 3:
