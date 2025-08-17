@@ -282,6 +282,34 @@ class User
         return true;
     }
 
+     boolean otpValidation()
+    {
+        int i=1;
+        boolean otpVerified = false;
+        while(i<=3)
+        {
+            System.out.print("Enter OTP: ");
+            int enteredOtp = sc.nextInt();
+            if(enteredOtp == admin.getOtp())
+            {
+                System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
+                otpVerified = true;
+                break;
+            }
+            else
+            {
+                System.out.println(ConsoleColors.RED + "Invalid OTP! Please try again." + ConsoleColors.RESET);
+            }
+            System.out.println(ConsoleColors.YELLOW + (4-i) + " attempts left." + ConsoleColors.RESET);
+            if(i == 4)
+            {
+                System.out.println("Too many attempts! Returning to user menu.");
+                showUserMenu();
+            }
+        }
+        return otpVerified;
+    }
+
     void signup() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- User Signup ---" + ConsoleColors.RESET);
@@ -308,19 +336,12 @@ class User
         long mobileNumber = Long.parseLong(savedMobile); // Convert mobile number to long for validation
         if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
         {
-                admin.otpGenerate();
-                System.out.print("Enter OTP : ");
-                int enteredOtp = sc.nextInt();
-                if(enteredOtp==admin.getOtp())
-                {
-                    System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
-                    isLoggedIn = true;
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "Invalid OTP !" + ConsoleColors.RESET);
-                    return;
-                }
+            admin.otpGenerate();
+            if(otpValidation());
+            {
+                System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
+                isLoggedIn = true;
+            }
         }
         else
         {
@@ -1227,10 +1248,7 @@ class Invoice
             if (mobile.equals(user.savedMobile)) 
             {
                 user.admin.otpGenerate();
-                System.out.print("Enter OTP: ");
-                int enteredOtp = sc.nextInt();
-                sc.nextLine();
-                if (enteredOtp == user.admin.getOtp()) 
+                if(user.otpValidation())
                 {
                     boolean paymentSuccess = false;
                     if (paymentMethod.equals("Wallet")) 
@@ -1311,12 +1329,11 @@ class Invoice
                         System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
                         System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
                     }
-                } 
-                else 
-                {
-                    System.out.println(ConsoleColors.RED + "Invalid OTP! Payment failed." + ConsoleColors.RESET);
-                    user.showUserMenu();
                 }
+                else
+                {
+                    System.out.println(ConsoleColors.RED + "Payment Failed!" + ConsoleColors.RESET);
+                } 
             } 
             else 
             {
