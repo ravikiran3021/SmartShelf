@@ -122,6 +122,12 @@ class Admin
     void viewReport() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Admin Report ---" + ConsoleColors.RESET);
+
+        //Current date and time 
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        System.out.println("Date & Time: " + now.format(formatter));
+        
         System.out.println("Total Revenue: " + AdminRevenue.getRevenue());
     
         // Grocery shelf items report
