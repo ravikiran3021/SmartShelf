@@ -104,6 +104,21 @@ class Admin
     void otpGenerate() 
     {
         otp = 1000 + (int) (Math.random() * 9000);
+        for(int i=0;i<20;i++)
+        {
+            try
+            {
+                Thread.sleep(150);
+            }
+            catch(Exception e){}
+            if(i%3==1)
+                System.out.print(ConsoleColors.CYAN + "\r"+"| Sending OTP..." + ConsoleColors.RESET);
+            else if(i%3==2)
+                System.out.print(ConsoleColors.CYAN + "\r"+"/ Sending OTP..." + ConsoleColors.RESET);
+            else
+                System.out.print(ConsoleColors.CYAN + "\r"+"- Sending OTP..." + ConsoleColors.RESET);
+        }
+        System.out.println(ConsoleColors.GREEN + "\r"+"OTP Sent Successfully......              " + ConsoleColors.RESET);
         System.out.println("Your OTP is : " + otp);
     }
 
