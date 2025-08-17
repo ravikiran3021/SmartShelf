@@ -9,7 +9,6 @@ class ConsoleColors
     static String BOLD = "\u001B[1m";
     static String DIM = "\u001B[2m"; 
     static String ITALIC = "\u001B[3m";
-    static String UNDERLINE = "\u001B[4m";
     static String RED = "\u001B[31m";
     static String GREEN = "\u001B[32m";
     static String YELLOW = "\u001B[33m";
