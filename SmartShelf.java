@@ -162,6 +162,11 @@ class Admin
         int totalElectronicsSold = electronicsShelf.getHeadphones().getSoldCount() + electronicsShelf.getCharger().getSoldCount() + electronicsShelf.getPowerBank().getSoldCount() + electronicsShelf.getUSBCable().getSoldCount() + electronicsShelf.getBluetoothSpeaker().getSoldCount() + electronicsShelf.getSmartWatch().getSoldCount() + electronicsShelf.getMouse().getSoldCount() + electronicsShelf.getKeyboard().getSoldCount();
         System.out.println(ConsoleColors.YELLOW + "\nTotal Grocery Items Sold: " + totalGrocerySold + ConsoleColors.RESET);
         System.out.println(ConsoleColors.YELLOW + "Total Electronics Items Sold: " + totalElectronicsSold + ConsoleColors.RESET);
+
+        // Shelf Maintenance Status
+        System.out.println(ConsoleColors.CYAN + "\nSHELF MAINTENANCE STATUS:" + ConsoleColors.RESET);
+        System.out.println("Grocery Shelf Under Maintenance: " + (groceryShelf.isUnderMaintenance() ? "Yes" : "No"));
+        System.out.println("Electronics Shelf Under Maintenance: " + (electronicsShelf.isUnderMaintenance() ? "Yes" : "No"));
     }
 
 
@@ -1359,9 +1364,9 @@ abstract class Shelf
         isUnderMaintenance = status;
     }
 
-    boolean isAccessible() 
+    boolean isUnderMaintenance()
     {
-        return !isUnderMaintenance;
+        return isUnderMaintenance;
     }
 
     abstract void displayItems();
@@ -1423,11 +1428,6 @@ class GroceryShelf extends Shelf
     
     void displayItems() 
     {
-        if (!isAccessible()) 
-        {
-            System.out.println("Grocery Shelf is under maintenance.");
-            return;
-        }
         System.out.println(ConsoleColors.CYAN + "\n< --- Grocery Shelf --- >" + ConsoleColors.RESET);
         System.out.printf("%-20s | %-10s | %-10s | %-15s%n", "Item Name", "Price", "Quantity", "Expiry Date");
         System.out.println("----------------------------------------------------------");
@@ -1443,11 +1443,7 @@ class GroceryShelf extends Shelf
 
     Item selectItemByName(String name) 
     {
-        if (!isAccessible()) 
-        {
-            System.out.println("Grocery Shelf is under maintenance.");
-            return null;
-        }
+
         if (name.equalsIgnoreCase("Rice")) 
         {
             return rice;
@@ -1542,11 +1538,6 @@ class ElectronicsShelf extends Shelf
     
     void displayItems() 
     {
-        if (!isAccessible()) 
-        {
-            System.out.println("Electronics Shelf is under maintenance.");
-            return;
-        }
         System.out.println(ConsoleColors.CYAN + "\n< --- Electronics Shelf --- >" + ConsoleColors.RESET);
         System.out.printf("%-20s | %-10s | %-10s | %-15s%n", "Item Name", "Price", "Quantity", "Expiry Date");
         System.out.println("----------------------------------------------------------");
@@ -1563,12 +1554,6 @@ class ElectronicsShelf extends Shelf
     
     Item selectItemByName(String name) 
     {
-        if (!isAccessible()) 
-        {
-            System.out.println("Electronics Shelf is under maintenance.");
-            return null;
-        }
-
         if (name.equalsIgnoreCase("Headphones")) 
         {
             return headphones;
