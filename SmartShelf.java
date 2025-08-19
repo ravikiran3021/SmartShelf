@@ -54,7 +54,11 @@ class Admin
             do
             {
                 System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n<----- Welcome to Admin Dashboard ----->" + ConsoleColors.RESET);
-                System.out.println("1. View Revenue\n2. View Report\n3. Put Shelves in Maintenance\n4. Remove Shelves from Maintenance\n5. Exit");
+                System.out.println("1. View Revenue");
+                System.out.println("2. view Report");
+                System.out.println("3. Put Shelves in Maintenance");
+                System.out.println("4. Remove Shelves from Maintenance");
+                System.out.println("5. Exit");
                 System.out.print("Enter option: ");
                 choice = sc.nextInt();
                 sc.nextLine(); // consume newline
@@ -134,7 +138,7 @@ class Admin
         System.out.println("Admin Wallet : " + AdminRevenue.getAdminFunds());
     }
     
-    void viewReport() 
+     void viewReport() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Admin Report ---" + ConsoleColors.RESET);
 
@@ -148,33 +152,33 @@ class Admin
         // Grocery shelf items report
         System.out.println(ConsoleColors.CYAN + "\nGROCERY SHELF REPORT:" + ConsoleColors.RESET);
         System.out.println();
-        System.out.printf("%-18s | %-10s | %-10s%n", "Item Name", "Remaining", "Sold");
-        System.out.println("-------------------------------------------");
-        System.out.printf("%-18s | %-10s | %-10s%n", "Rice", groceryShelf.getRice().getQuantity(), groceryShelf.getRice().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Cooking Oil", groceryShelf.getOil().getQuantity(), groceryShelf.getOil().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Sugar", groceryShelf.getSugar().getQuantity(), groceryShelf.getSugar().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Milk", groceryShelf.getMilk().getQuantity(), groceryShelf.getMilk().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Salt", groceryShelf.getSalt().getQuantity(), groceryShelf.getSalt().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Wheat", groceryShelf.getWheat().getQuantity(), groceryShelf.getWheat().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Biscuits", groceryShelf.getBiscuits().getQuantity(), groceryShelf.getBiscuits().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Bread", groceryShelf.getBread().getQuantity(), groceryShelf.getBread().getSoldCount());
-        System.out.println("-------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
+        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getRice().getId(), groceryShelf.getRice().getName(), groceryShelf.getRice().getQuantity(), groceryShelf.getRice().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getOil().getId(), groceryShelf.getOil().getName(), groceryShelf.getOil().getQuantity(), groceryShelf.getOil().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getSugar().getId(), groceryShelf.getSugar().getName(), groceryShelf.getSugar().getQuantity(), groceryShelf.getSugar().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getMilk().getId(), groceryShelf.getMilk().getName(), groceryShelf.getMilk().getQuantity(), groceryShelf.getMilk().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getSalt().getId(), groceryShelf.getSalt().getName(), groceryShelf.getSalt().getQuantity(), groceryShelf.getSalt().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getWheat().getId(), groceryShelf.getWheat().getName(), groceryShelf.getWheat().getQuantity(), groceryShelf.getWheat().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getBiscuits().getId(), groceryShelf.getBiscuits().getName(), groceryShelf.getBiscuits().getQuantity(), groceryShelf.getBiscuits().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getBread().getId(), groceryShelf.getBread().getName(), groceryShelf.getBread().getQuantity(), groceryShelf.getBread().getSoldCount());
+        System.out.println("----------------------------------------------------");
 
         
         // Electronics shelf items report
         System.out.println(ConsoleColors.CYAN + "\nELECTRONICS SHELF REPORT:" + ConsoleColors.RESET);
         System.out.println();
-        System.out.printf("%-18s | %-10s | %-10s%n", "Item Name", "Remaining", "Sold");
-        System.out.println("-------------------------------------------");
-        System.out.printf("%-18s | %-10s | %-10s%n", "Headphones", electronicsShelf.getHeadphones().getQuantity(), electronicsShelf.getHeadphones().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Charger", electronicsShelf.getCharger().getQuantity(), electronicsShelf.getCharger().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "PowerBank", electronicsShelf.getPowerBank().getQuantity(), electronicsShelf.getPowerBank().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "USB Cable", electronicsShelf.getUSBCable().getQuantity(), electronicsShelf.getUSBCable().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Bluetooth Speaker", electronicsShelf.getBluetoothSpeaker().getQuantity(), electronicsShelf.getBluetoothSpeaker().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Smart Watch", electronicsShelf.getSmartWatch().getQuantity(), electronicsShelf.getSmartWatch().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Mouse", electronicsShelf.getMouse().getQuantity(), electronicsShelf.getMouse().getSoldCount());
-        System.out.printf("%-18s | %-10s | %-10s%n", "Keyboard", electronicsShelf.getKeyboard().getQuantity(), electronicsShelf.getKeyboard().getSoldCount());
-        System.out.println("-------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
+        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getHeadphones().getId(), electronicsShelf.getHeadphones().getName(), electronicsShelf.getHeadphones().getQuantity(), electronicsShelf.getHeadphones().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getCharger().getId(), electronicsShelf.getCharger().getName(), electronicsShelf.getCharger().getQuantity(), electronicsShelf.getCharger().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getPowerBank().getId(), electronicsShelf.getPowerBank().getName(), electronicsShelf.getPowerBank().getQuantity(), electronicsShelf.getPowerBank().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getUSBCable().getId(), electronicsShelf.getUSBCable().getName(), electronicsShelf.getUSBCable().getQuantity(), electronicsShelf.getUSBCable().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getBluetoothSpeaker().getId(), electronicsShelf.getBluetoothSpeaker().getName(), electronicsShelf.getBluetoothSpeaker().getQuantity(), electronicsShelf.getBluetoothSpeaker().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getSmartWatch().getId(), electronicsShelf.getSmartWatch().getName(), electronicsShelf.getSmartWatch().getQuantity(), electronicsShelf.getSmartWatch().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getMouse().getId(), electronicsShelf.getMouse().getName(), electronicsShelf.getMouse().getQuantity(), electronicsShelf.getMouse().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getKeyboard().getId(), electronicsShelf.getKeyboard().getName(), electronicsShelf.getKeyboard().getQuantity(), electronicsShelf.getKeyboard().getSoldCount());
+        System.out.println("----------------------------------------------------");
     
         // Totals
         System.out.println();
@@ -189,7 +193,6 @@ class Admin
         System.out.println("Grocery Shelf Under Maintenance: " + (groceryShelf.isUnderMaintenance() ? "Yes" : "No"));
         System.out.println("Electronics Shelf Under Maintenance: " + (electronicsShelf.isUnderMaintenance() ? "Yes" : "No"));
     }
-
 
     void putShelvesInMaintenance() 
     {
@@ -297,7 +300,7 @@ class User
         return true;
     }
 
-     boolean otpValidation() 
+    boolean otpValidation() 
     {
 
         int attempts = 3; 
@@ -310,7 +313,7 @@ class User
 
             if (enteredOtp == admin.getOtp()) 
             {
-                System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
+                //System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
                 otpVerified = true;
                 break;
             } 
@@ -581,33 +584,71 @@ class User
         {
             case 1:
                 groceryShelf.displayItems();
-                System.out.print("Enter item name to purchase : ");
-                String groceryItem = sc.nextLine();
-                Item grocerySelectedItem = groceryShelf.selectItemByName(groceryItem);
+                if(groceryShelf.isUnderMaintenance())
+                {
+                    System.out.println(ConsoleColors.RED + "Grocery Shelf is currently under maintenance. Please try again later." + ConsoleColors.RESET);
+                    return;
+                }
+                System.out.print("Enter item ID to purchase : ");
+                int groceryItemId = sc.nextInt();
+                Item grocerySelectedItem = groceryShelf.selectItemById(groceryItemId);
                 if (grocerySelectedItem != null) 
                 {
                     System.out.print("Enter quantity: ");
                     int groceryQty = sc.nextInt();
                     sc.nextLine();
-                    
+                    if(groceryQty > grocerySelectedItem.getQuantity())
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient stock for " + grocerySelectedItem.getName() + ". Available quantity: " + grocerySelectedItem.getQuantity() + ConsoleColors.RESET);
+                        System.out.print("Do you want to add the available quantity to your cart? (y/n) ");
+                        char ch = sc.next().charAt(0);
+                        if(ch == 'y' || ch == 'Y')
+                        {
+                            groceryQty = grocerySelectedItem.getQuantity();
+                        }
+                        else if(ch == 'n' || ch == 'N')
+                        {
+                            System.out.print("Do you want to enter the quantity again? (y/n) ");
+                            char ch1 = sc.next().charAt(0);
+                            if(ch1 == 'y' || ch1 == 'Y')
+                            {
+                                System.out.print("Enter quantity: ");
+                                groceryQty = sc.nextInt();
+                            }
+                            else if(ch1 == 'n' || ch1 == 'N')
+                            {
+                                System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                            else
+                            {
+                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                        }
+                        else
+                        {
+                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                            shopForItems();
+                        }
+                    }
                     // Check if item already in cart
-                    
-                    if (cartItem1 != null && cartItem1.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    if (cartItem1 != null && cartItem1.getId() == grocerySelectedItem.getId())
                     { 
                         qty1 += groceryQty; 
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
-                    else if (cartItem2 != null && cartItem2.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    else if (cartItem2 != null && cartItem2.getId() == grocerySelectedItem.getId())
                     {
                         qty2 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
-                    else if (cartItem3 != null && cartItem3.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    else if (cartItem3 != null && cartItem3.getId() == grocerySelectedItem.getId())
                     {
                         qty3 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
-                    else if (cartItem4 != null && cartItem4.getName().equalsIgnoreCase(grocerySelectedItem.getName()))
+                    else if (cartItem4 != null && cartItem4.getId() == grocerySelectedItem.getId())
                     {
                         qty4 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
@@ -616,25 +657,25 @@ class User
                     {
                         cartItem1 = grocerySelectedItem;
                         qty1 = groceryQty;
-                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem2 == null)
                     {
                         cartItem2 = grocerySelectedItem;
                         qty2 = groceryQty;
-                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 == null)
                     {
                         cartItem3 = grocerySelectedItem;
                         qty3 = groceryQty;
-                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = grocerySelectedItem;
                         qty4 = groceryQty;
-                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else 
                         System.out.println(ConsoleColors.YELLOW + "OOPS! Cart is full!" + ConsoleColors.RESET);
@@ -642,33 +683,72 @@ class User
                 break;
             case 2:
                 electronicsShelf.displayItems();
-                System.out.print("Enter item name to purchase : ");
-                String electronicsItem = sc.nextLine();
-                Item electronicsSelectedItem = electronicsShelf.selectItemByName(electronicsItem);
+                if(electronicsShelf.isUnderMaintenance())
+                {
+                    System.out.println(ConsoleColors.RED + "Electronics Shelf is currently under maintenance. Please try again later." + ConsoleColors.RESET);
+                    return;
+                }
+                System.out.print("Enter item ID to purchase : ");
+                int electronicsItemId = sc.nextInt();
+                Item electronicsSelectedItem = electronicsShelf.selectItemById(electronicsItemId);
                 if (electronicsSelectedItem != null) 
                 {
                     System.out.print("Enter quantity: ");
                     int electronicsQty = sc.nextInt();
                     sc.nextLine();
+                    if(electronicsQty > electronicsSelectedItem.getQuantity())
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient stock for " + electronicsSelectedItem.getName() + ". Available quantity: " + electronicsSelectedItem.getQuantity() + ConsoleColors.RESET);
+                        System.out.print("Do you want to add the available quantity to your cart? (y/n)");
+                        char ch = sc.next().charAt(0);
+                        if(ch == 'y' || ch == 'Y')
+                        {
+                            electronicsQty = electronicsSelectedItem.getQuantity();
+                        }
+                        else if(ch == 'n' || ch == 'N')
+                        {
+                            System.out.print("Do you want to enter the quantity again? (y/n) ");
+                            char ch1 = sc.next().charAt(0);
+                            if(ch1 == 'y' || ch1 == 'Y')
+                            {
+                                System.out.print("Enter quantity: ");
+                                electronicsQty = sc.nextInt();
+                            }
+                            else if(ch1 == 'n' || ch1 == 'N')
+                            {
+                                System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                            else
+                            {
+                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                        }
+                        else
+                        {
+                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                            shopForItems();
+                        }
+                    }
 
                     // Check if item already in cart
-
-                    if (cartItem1 != null && cartItem1.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    if (cartItem1 != null && cartItem1.getId() == electronicsSelectedItem.getId())
                     {
                         qty1 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
-                    else if (cartItem2 != null && cartItem2.getName().equalsIgnoreCase(electronicsSelectedItem.getName())) 
-                    {
+                    else if (cartItem2 != null && cartItem2.getId() == electronicsSelectedItem.getId())
+                    { 
                         qty2 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
-                    }
-                    else if (cartItem3 != null && cartItem3.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    }   
+                    else if (cartItem3 != null && cartItem3.getId() == electronicsSelectedItem.getId())
                     {
                         qty3 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
-                    else if (cartItem4 != null && cartItem4.getName().equalsIgnoreCase(electronicsSelectedItem.getName()))
+                    else if (cartItem4 != null && cartItem4.getId() == electronicsSelectedItem.getId())
                     {
                         qty4 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
@@ -677,25 +757,25 @@ class User
                     {
                         cartItem1 = electronicsSelectedItem;
                         qty1 = electronicsQty;
-                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem2 == null)
                     { 
                         cartItem2 = electronicsSelectedItem;
                         qty2 = electronicsQty;
-                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem3 == null)
                     {
                         cartItem3 = electronicsSelectedItem;
                         qty3 = electronicsQty;
-                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = electronicsSelectedItem;
                         qty4 = electronicsQty;
-                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart Successfully." + ConsoleColors.RESET);
+                        System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else 
                         System.out.println(ConsoleColors.YELLOW + "OOPS! Cart is full!" + ConsoleColors.RESET);
@@ -743,7 +823,7 @@ class User
         Invoice.generate(this, cartItem1, qty1, cartItem2, qty2, cartItem3, qty3, cartItem4, qty4);
     }
 
-   void removeItemFromCart()
+    void removeItemFromCart()
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Remove Items from Cart ---" + ConsoleColors.RESET);
         if (cartItem1 == null && cartItem2 == null && cartItem3 == null && cartItem4 == null)
@@ -765,7 +845,12 @@ class User
             System.out.println("4. " + cartItem4.getName() + " x" + qty4);
         System.out.println();
         System.out.println(ConsoleColors.ITALIC + "------ Options -----" + ConsoleColors.RESET);
-        System.out.println("1. Remove Item 1\n 2. Remove Item 2\n 3. Remove Item 3\n 4. Remove Item 4\n 5. Clear Cart\n 6. Back to User Menu");
+        System.out.println("1. Remove Item 1");
+        System.out.println("2. Remove Item 2");
+        System.out.println("3. Remove Item 3");
+        System.out.println("4. Remove Item 4");
+        System.out.println("5. Clear Cart");
+        System.out.println("6. Back to User Menu");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
         switch (choice)
@@ -773,8 +858,9 @@ class User
             case 1:
                 if (cartItem1 != null)
                 {
-                    System.out.println("Do you want to reduce the quantity of Item 1 in cart?");
-                    System.out.print("1. Update Quantity\n 2. Remove Item\n");
+                    System.out.println("1. Do you want to Update Quantity of Item 1 in cart ");
+                    System.out.println("2. Do you want to Remove Item 1 from cart");
+                    System.out.print("Enter choice: ");
                     int choice1 = sc.nextInt();
                     switch(choice1)
                     {
@@ -832,8 +918,9 @@ class User
             case 2:
                 if (cartItem2 != null)
                 {
-                    System.out.println("Do you want to reduce the quantity of Item 2 in cart?");
-                    System.out.print("1. Update Quantity\n 2. Remove Item\n");
+                    System.out.println("1. Do you want to Update Quantity of Item 2 in cart ");
+                    System.out.println("2. Do you want to Remove Item 2 from cart");
+                    System.out.print("Enter choice: ");
                     int choice2 = sc.nextInt();
                     switch(choice2)
                     {
@@ -891,8 +978,9 @@ class User
             case 3:
                 if (cartItem3 != null)
                 {
-                    System.out.println("Do you want to reduce the quantity of Item 3 in cart?");
-                    System.out.print("1. Update Quantity\n 2. Remove Item\n");
+                    System.out.println("1. Do you want to Update Quantity of Item 3 in cart ");
+                    System.out.println("2. Do you want to Remove Item 3 from cart");
+                    System.out.print("Enter choice: ");
                     int choice3 = sc.nextInt();
                     switch(choice3)
                     {
@@ -950,8 +1038,9 @@ class User
             case 4:
                 if (cartItem4 != null)
                 {
-                    System.out.println("Do you want to reduce the quantity of Item 4 in cart?");
-                    System.out.print("1. Update Quantity\n 2. Remove Item\n");
+                    System.out.println("1. Do you want to Update Quantity of Item 4 in cart ");
+                    System.out.println("2. Do you want to Remove Item 4 from cart");
+                    System.out.print("Enter choice: ");
                     int choice4 = sc.nextInt();
                     switch(choice4)
                     {
@@ -1019,6 +1108,7 @@ class User
         }
     }
     
+
     void clearCart() 
     {
         cartItem1 = null;
@@ -1034,6 +1124,9 @@ class User
 
 class Item 
 {
+    private static int nextId = 1; // Static counter for auto-incrementing ID
+
+    private int id;
     private String name;
     private double price;
     private int quantity;
@@ -1049,6 +1142,7 @@ class Item
     // Constructor
     Item(String name, double price, int quantity, String expiry, int restockprice) 
     {
+        this.id = nextId++; // Assign unique ID and increment the counter
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -1058,6 +1152,11 @@ class Item
     }
 
     // Getters
+    int getId() 
+    {
+        return id;
+    }
+
     String getName() 
     {
         return name;
@@ -1118,7 +1217,7 @@ class Item
 
     void displayItem() 
     {
-        System.out.printf("%-20s | %-10s | %-10s | %-15s%n", name, price, quantity, expiry);
+        System.out.printf("%-5d | %-20s | %-10.2f | %-10d | %-15s%n", id, name, price, quantity, expiry);
     }
 
     // Static methods for report
@@ -1177,7 +1276,7 @@ class Invoice
         // Show date & time
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        System.out.println("Date : " + now.format(format));
+        System.out.println("Date & Time: " + now.format(format));
         System.out.println("User : " + user.savedName);
 
         double total = 0.0;
@@ -1281,6 +1380,7 @@ class Invoice
                 user.admin.otpGenerate();
                 if(user.otpValidation())
                 {
+                    System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
                     boolean paymentSuccess = false;
                     if (paymentMethod.equals("Wallet")) 
                     {
@@ -1346,6 +1446,7 @@ class Invoice
                         if (ch == 'y' || ch == 'Y')
                         {
                             System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n< ----- INVOICE ----- >" + ConsoleColors.RESET);
+                            System.out.println("========================================");
                             System.out.println("Date           : " + now.format(format));
                             System.out.println("User           : " + user.savedName);
                             System.out.println("Payment Method : " + paymentMethod);
@@ -1355,7 +1456,7 @@ class Invoice
                             System.out.println("---------------------------------------");
                             System.out.printf(ConsoleColors.BOLD + "FINAL AMOUNT   : %.2f" + ConsoleColors.RESET, finalAmount);
                             System.out.println();
-                            System.out.println("---------------------------------------");
+                            System.out.println("========================================");
                         }
                         System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
                         System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
@@ -1379,6 +1480,7 @@ class Invoice
         }
     }
 }
+
 class AdminRevenue 
 {
     static double totalRevenue = 0.0;
@@ -1417,7 +1519,6 @@ abstract class Shelf
     {
         isUnderMaintenance = status;
     }
-
     boolean isUnderMaintenance()
     {
         return isUnderMaintenance;
@@ -1425,7 +1526,7 @@ abstract class Shelf
 
     abstract void displayItems();
 
-    abstract Item selectItemByName(String itemName);
+    abstract Item selectItemById(int id);
 }
 
 class GroceryShelf extends Shelf 
@@ -1483,8 +1584,8 @@ class GroceryShelf extends Shelf
     void displayItems() 
     {
         System.out.println(ConsoleColors.CYAN + "\n< --- Grocery Shelf --- >" + ConsoleColors.RESET);
-        System.out.printf("%-20s | %-10s | %-10s | %-15s%n", "Item Name", "Price", "Quantity", "Expiry Date");
-        System.out.println("----------------------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-15s%n", "ID", "Item Name", "Price", "Quantity", "Expiry Date");
+        System.out.println("---------------------------------------------------------------------");
         rice.displayItem();
         oil.displayItem();
         sugar.displayItem();
@@ -1495,44 +1596,44 @@ class GroceryShelf extends Shelf
         Bread.displayItem();
     }
 
-    Item selectItemByName(String name) 
+    Item selectItemById(int id) 
     {
 
-        if (name.equalsIgnoreCase("Rice")) 
+        if (id == rice.getId()) 
         {
             return rice;
-        } 
-        else if (name.equalsIgnoreCase("Cooking Oil")) 
+        }
+        else if (id == oil.getId()) 
         {
             return oil;
-        } 
-        else if (name.equalsIgnoreCase("Sugar")) 
+        }
+        else if (id == sugar.getId())
         {
             return sugar;
         }
-        else if (name.equalsIgnoreCase("Milk")) 
+        else if (id == Milk.getId()) 
         {
             return Milk;
         }
-        else if (name.equalsIgnoreCase("Salt")) 
+        else if (id == Salt.getId()) 
         {
             return Salt;
         }
-        else if (name.equalsIgnoreCase("Wheat"))
+        else if (id == Wheat.getId())
         {
             return Wheat;
         }
-        else if (name.equalsIgnoreCase("Biscuits")) 
+        else if (id == Biscuits.getId())
         {
             return Biscuits;
         }
-        else if (name.equalsIgnoreCase("Bread"))
+        else if (id == Bread.getId())
         {
             return Bread;
         }
         else 
         {
-            System.out.println(ConsoleColors.RED + "Item not found." + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "Item ID not found." + ConsoleColors.RESET);
             return null;
         }
     }
@@ -1592,9 +1693,10 @@ class ElectronicsShelf extends Shelf
     
     void displayItems() 
     {
+
         System.out.println(ConsoleColors.CYAN + "\n< --- Electronics Shelf --- >" + ConsoleColors.RESET);
-        System.out.printf("%-20s | %-10s | %-10s | %-15s%n", "Item Name", "Price", "Quantity", "Expiry Date");
-        System.out.println("----------------------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-15s%n", "ID", "Item Name", "Price", "Quantity", "Expiry Date");
+        System.out.println("---------------------------------------------------------------------");
         headphones.displayItem();
         charger.displayItem();
         powerBank.displayItem();
@@ -1606,49 +1708,50 @@ class ElectronicsShelf extends Shelf
     }
 
     
-    Item selectItemByName(String name) 
+    Item selectItemById(int id) 
     {
-        if (name.equalsIgnoreCase("Headphones")) 
+
+        if (id == headphones.getId()) 
         {
             return headphones;
         }
-        else if (name.equalsIgnoreCase("Charger")) 
+        else if (id == charger.getId()) 
         {
             return charger;
         }
-        else if (name.equalsIgnoreCase("PowerBank"))   
+        else if (id == powerBank.getId())
         {
             return powerBank;
         }
-        else if (name.equalsIgnoreCase("USB Cable")) 
+        else if (id == USBCable.getId()) 
         {
             return USBCable;
         }
-        else if (name.equalsIgnoreCase("Bluetooth Speaker"))
+        else if (id == BluetoothSpeaker.getId())
         {
             return BluetoothSpeaker;
         }
-        else if (name.equalsIgnoreCase("Smart Watch"))
+        else if (id == SmartWatch.getId())
         {
             return SmartWatch;
         }
-        else if (name.equalsIgnoreCase("Mouse"))
+        else if (id == Mouse.getId())
         {
             return Mouse;
         }
-        else if (name.equalsIgnoreCase("Keyboard"))
+        else if (id == Keyboard.getId())
         {
             return Keyboard;
         }
         else 
         {
-            System.out.println(ConsoleColors.RED + "Item not found." + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "Item ID not found." + ConsoleColors.RESET);
             return null;
         }
     }
 }
 
-class Smartshelf 
+class Smartshelf
 {
     public static void main(String[] args) 
     {
