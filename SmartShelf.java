@@ -1776,7 +1776,7 @@ class ElectronicsShelf extends Shelf
 
 // }
 
-class SmartshelfID 
+class Smartshelf
 {
     public static void main(String[] args) 
     {
