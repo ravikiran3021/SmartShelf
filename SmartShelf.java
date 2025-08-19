@@ -782,7 +782,7 @@ class User
                 }
                 break;
             case 3:
-                return;
+                showUserMenu();
             default:
                 System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
         }
@@ -1436,6 +1436,16 @@ class Invoice
                             item2.reduceQuantity(qty2);
                             item2.autoRestock();
                         }
+                        if (item3 != null) 
+                        {
+                            item3.reduceQuantity(qty3);
+                            item3.autoRestock();
+                        }
+                        if (item4 != null) 
+                        {
+                            item4.reduceQuantity(qty4);
+                            item4.autoRestock();
+                        }
                         
                         user.clearCart();
                         System.out.println("Enter your Address to deliver your purchased Products ");
@@ -1751,7 +1761,22 @@ class ElectronicsShelf extends Shelf
     }
 }
 
-class Smartshelf
+// class Toys extends Shelf 
+// {
+
+// }
+
+// class Furniture extends Shelf
+// {
+
+// }
+
+// class Fashion extends Shelf
+// {
+
+// }
+
+class SmartshelfID 
 {
     public static void main(String[] args) 
     {
