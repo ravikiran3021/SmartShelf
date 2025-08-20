@@ -675,41 +675,49 @@ class User
                     // Check if item already in cart
                     if (cartItem1 != null && cartItem1.getId() == grocerySelectedItem.getId())
                     { 
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty1 += groceryQty; 
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem2 != null && cartItem2.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty2 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 != null && cartItem3.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty3 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 != null && cartItem4.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty4 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 != null && cartItem5.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty5 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem6 != null && cartItem6.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty6 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem7 != null && cartItem7.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty7 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 != null && cartItem8.getId() == grocerySelectedItem.getId())
                     {
+                        grocerySelectedItem.reserveItem(groceryQty);
                         qty8 += groceryQty;
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
@@ -717,48 +725,56 @@ class User
                     {
                         cartItem1 = grocerySelectedItem;
                         qty1 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem2 == null)
                     {
                         cartItem2 = grocerySelectedItem;
                         qty2 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 == null)
                     {
                         cartItem3 = grocerySelectedItem;
                         qty3 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = grocerySelectedItem;
                         qty4 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 == null) 
                     {
                         cartItem5 = grocerySelectedItem;
                         qty5 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem6 == null)
                     {
                         cartItem6 = grocerySelectedItem;
                         qty6 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem7 == null)
                     {
                         cartItem7 = grocerySelectedItem;
                         qty7 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 == null)
                     {
                         cartItem8 = grocerySelectedItem;
                         qty8 = groceryQty;
+                        grocerySelectedItem.reserveItem(groceryQty);
                         System.out.println(ConsoleColors.GREEN + grocerySelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else 
@@ -819,41 +835,49 @@ class User
                     // Check if item already in cart
                     if (cartItem1 != null && cartItem1.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty1 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem2 != null && cartItem2.getId() == electronicsSelectedItem.getId())
                     { 
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty2 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem3 != null && cartItem3.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty3 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 != null && cartItem4.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty4 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 != null && cartItem5.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty5 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem6 != null && cartItem6.getId() == electronicsSelectedItem.getId())
                     { 
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty6 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem7 != null && cartItem7.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty7 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 != null && cartItem8.getId() == electronicsSelectedItem.getId())
                     {
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         qty8 += electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
@@ -861,18 +885,21 @@ class User
                     {
                         cartItem1 = electronicsSelectedItem;
                         qty1 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem2 == null)
                     { 
                         cartItem2 = electronicsSelectedItem;
                         qty2 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem3 == null)
                     {
                         cartItem3 = electronicsSelectedItem;
                         qty3 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     
@@ -880,30 +907,35 @@ class User
                     {
                         cartItem4 = electronicsSelectedItem;
                         qty4 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 == null) 
                     {
                         cartItem5 = electronicsSelectedItem;
                         qty5 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem6 == null)
                     { 
                         cartItem6 = electronicsSelectedItem;
                         qty6 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     } 
                     else if (cartItem7 == null)
                     {
                         cartItem7 = electronicsSelectedItem;
                         qty7 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 == null)
                     {
                         cartItem8 = electronicsSelectedItem;
                         qty8 = electronicsQty;
+                        electronicsSelectedItem.reserveItem(electronicsQty);
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else 
@@ -963,41 +995,50 @@ class User
                     // Check if item already in cart
                     if (cartItem1 != null && cartItem1.getId() == toysSelectedItem.getId())
                     { 
+                        toysSelectedItem.reserveItem(toyQty);
                         qty1 += toyQty; 
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                        
                     }
                     else if (cartItem2 != null && cartItem2.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty2 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 != null && cartItem3.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty3 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 != null && cartItem4.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty4 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 != null && cartItem5.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty5 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem6 != null && cartItem6.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty6 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem7 != null && cartItem7.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty7 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 != null && cartItem8.getId() == toysSelectedItem.getId())
                     {
+                        toysSelectedItem.reserveItem(toyQty);
                         qty8 += toyQty;
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
                     }
@@ -1005,48 +1046,56 @@ class User
                     {
                         cartItem1 = toysSelectedItem;
                         qty1 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem2 == null)
                     {
                         cartItem2 = toysSelectedItem;
                         qty2 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem3 == null)
                     {
                         cartItem3 = toysSelectedItem;
                         qty3 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem4 == null)
                     {
                         cartItem4 = toysSelectedItem;
                         qty4 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem5 == null) 
                     {
                         cartItem5 = toysSelectedItem;
                         qty5 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }   
                     else if (cartItem6 == null)
                     {
                         cartItem6 = toysSelectedItem;
                         qty6 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem7 == null)
                     {
                         cartItem7 = toysSelectedItem;
                         qty7 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else if (cartItem8 == null)
                     {
                         cartItem8 = toysSelectedItem;
                         qty8 = toyQty;
+                        toysSelectedItem.reserveItem(toyQty);
                         System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
                     else 
@@ -1114,32 +1163,41 @@ class User
     void modifyOrRemoveItem(int itemNumber) 
     {
         Item selectedItem = null;
+        int oldQty = 0;
 
         switch(itemNumber) 
         {
             case 1: 
                 selectedItem = cartItem1; 
+                oldQty = qty1;
                 break;
             case 2: 
                 selectedItem = cartItem2; 
+                oldQty = qty2;
                 break;
             case 3: 
                 selectedItem = cartItem3; 
+                oldQty = qty3;
                 break;
             case 4: 
-                selectedItem = cartItem4; 
+                selectedItem = cartItem4;
+                oldQty = qty4; 
                 break;
             case 5: 
-                selectedItem = cartItem5; 
+                selectedItem = cartItem5;
+                oldQty = qty5; 
                 break;
             case 6: 
-                selectedItem = cartItem6; 
+                selectedItem = cartItem6;
+                oldQty = qty6; 
                 break;
             case 7: 
                 selectedItem = cartItem7; 
+                oldQty = qty7;
                 break;
             case 8: 
                 selectedItem = cartItem8; 
+                oldQty = qty8;
                 break;
         }
 
@@ -1152,41 +1210,63 @@ class User
         {
             System.out.print("Enter new quantity: ");
             int newQty = sc.nextInt();
-            if (newQty > 0 && newQty <= selectedItem.getQuantity()) 
+            if (newQty <= 0) 
             {
-                switch(itemNumber) 
+                System.out.println(ConsoleColors.RED + "Quantity must be positive." + ConsoleColors.RESET);
+                return;
+            }
+
+            int difference = newQty - oldQty;
+
+            if (difference > 0) // adding quantity
+            { 
+                if (selectedItem.getQuantity() >= difference) 
                 {
-                    case 1: 
-                        qty1 = newQty; 
-                        break;
-                    case 2:
-                        qty2 = newQty; 
-                        break;
-                    case 3: 
-                        qty3 = newQty; 
-                        break;
-                    case 4: 
-                        qty4 = newQty; 
-                        break;
-                    case 5: 
-                        qty5 = newQty; 
-                        break;
-                    case 6: 
-                        qty6 = newQty; 
-                        break;
-                    case 7: 
-                        qty7 = newQty; 
-                        break;
-                    case 8: 
-                        qty8 = newQty;
-                        break;
+                    selectedItem.reserveItem(difference);
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Insufficient stock. Available stock: " + selectedItem.getQuantity() + ConsoleColors.RESET);
+                    return;
                 }
-                System.out.println(ConsoleColors.GREEN + "Quantity updated." + ConsoleColors.RESET);
             } 
+            else if (difference < 0) // reducing quantity
+            { 
+                selectedItem.releaseItem(-difference); // Add stock back
+            }
             else 
             {
                 System.out.println(ConsoleColors.RED + "Invalid quantity. Available stock: " + selectedItem.getQuantity() + ConsoleColors.RESET);
             }
+
+            switch(itemNumber) 
+            {
+                case 1: 
+                    qty1 = newQty; 
+                    break;
+                case 2: 
+                    qty2 = newQty; 
+                    break;
+                case 3: 
+                    qty3 = newQty; 
+                    break;
+                case 4: 
+                    qty4 = newQty; 
+                    break;
+                case 5: 
+                    qty5 = newQty; 
+                    break;
+                case 6: 
+                    qty6 = newQty; 
+                    break;
+                case 7: 
+                    qty7 = newQty; 
+                    break;
+                case 8: 
+                    qty8 = newQty; 
+                    break;
+            }
+            System.out.println(ConsoleColors.GREEN + "Quantity updated successfully." + ConsoleColors.RESET);
         } 
         else if (choice == 2) 
         {
@@ -1194,6 +1274,7 @@ class User
             char confirm = sc.next().charAt(0);
             if (confirm == 'y' || confirm == 'Y') 
             {
+                selectedItem.releaseItem(oldQty);
                 switch(itemNumber) 
                 {
                     case 1: 
@@ -1260,76 +1341,103 @@ class User
         viewCart();
         System.out.println();
         System.out.println(ConsoleColors.ITALIC + "------ Options -----" + ConsoleColors.RESET);
-        System.out.println("1. Enter the Item Number you want to modify/remove");
-        System.out.println("2. Clear Entire Cart");
-        System.out.println("3. Back to User Menu");
+        System.out.println("Enter the Item Number(1-8) you want to modify/remove");
+        System.out.println("9. Clear Entire Cart");
+        System.out.println("10. Back to User Menu");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
-    
-        switch (choice)
+
+        if (choice >= 1 && choice <= 8) 
         {
-            case 1:
-                if (cartItem1 != null) 
-                    modifyOrRemoveItem(1);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 1 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 2:
-                if (cartItem2 != null) 
-                    modifyOrRemoveItem(2);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 2 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 3:
-                if (cartItem3 != null) 
-                    modifyOrRemoveItem(3);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 3 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 4:
-                if (cartItem4 != null) 
-                    modifyOrRemoveItem(4);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 4 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 5:
-                if (cartItem5 != null) 
-                    modifyOrRemoveItem(5);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 5 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 6:
-                if (cartItem6 != null) 
-                    modifyOrRemoveItem(6);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 6 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 7:
-                if (cartItem7 != null) 
-                    modifyOrRemoveItem(7);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 7 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 8:
-                if (cartItem8 != null) 
-                    modifyOrRemoveItem(8);
-                else 
-                    System.out.println(ConsoleColors.RED + "No Item 8 in cart to remove" + ConsoleColors.RESET);
-                break;
-            case 9:
-                clearCart();
-                System.out.println(ConsoleColors.GREEN + "Cart cleared successfully." + ConsoleColors.RESET);
-                break;
-            case 10:
-                showUserMenu();
-            default:
-                System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
-                showUserMenu();
+            Item targetItem = null;
+            switch(choice) 
+            {
+                case 1: 
+                    targetItem = cartItem1; 
+                    break;
+                case 2: 
+                    targetItem = cartItem2; 
+                    break;
+                case 3: 
+                    targetItem = cartItem3; 
+                    break;
+                case 4: 
+                    targetItem = cartItem4; 
+                    break;
+                case 5: 
+                    targetItem = cartItem5; 
+                    break;
+                case 6: 
+                    targetItem = cartItem6; 
+                    break;
+                case 7: 
+                    targetItem = cartItem7; 
+                    break;
+                case 8: 
+                    targetItem = cartItem8; 
+                    break;
+            }
+            if (targetItem != null) 
+            {
+                modifyOrRemoveItem(choice);
+            } 
+            else 
+            {
+                System.out.println(ConsoleColors.RED + "No Item " + choice +" in cart to remove" + ConsoleColors.RESET);
+            }
+        } 
+        else if (choice == 9) 
+        {
+            clearCart();
+            System.out.println(ConsoleColors.GREEN + "Cart cleared successfully." + ConsoleColors.RESET);
+        } 
+        else if (choice == 10) 
+        {
+            System.out.println(ConsoleColors.DIM + " Returning to User Menu..." + ConsoleColors.RESET);
+            showUserMenu();
+        } 
+        else 
+        {
+            System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+            showUserMenu();
         }
     } 
     
     void clearCart() 
     {
+        if (cartItem1 != null) 
+        { 
+            cartItem1.releaseItem(qty1); 
+        }
+        if (cartItem2 != null) 
+        { 
+            cartItem2.releaseItem(qty2); 
+        }
+        if (cartItem3 != null) 
+        { 
+            cartItem3.releaseItem(qty3); 
+        }
+        if (cartItem4 != null) 
+        { 
+            cartItem4.releaseItem(qty4); 
+        }
+        if (cartItem5 != null) 
+        { 
+            cartItem5.releaseItem(qty5); 
+        }
+        if (cartItem6 != null) 
+        { 
+            cartItem6.releaseItem(qty6); 
+        }
+        if (cartItem7 != null) 
+        { 
+            cartItem7.releaseItem(qty7); 
+        }
+        if (cartItem8 != null) 
+        { 
+            cartItem8.releaseItem(qty8); 
+        }
+
         cartItem1 = null;
         cartItem2 = null;
         cartItem3 = null;
@@ -1409,16 +1517,28 @@ class Item
         return restockprice;
     }
 
-    // Reduce quantity when purchased
-     void reduceQuantity(int qty) 
+    // Reduces stock when an item is added to the cart
+    void reserveItem(int qty) 
     {
         if (quantity >= qty) 
         {
             quantity -= qty;
-            soldCount += qty; // track sold count per item
-            totalItemsSold += qty;
             totalItemsInStock -= qty;
         }
+    }
+    
+    // Increases stock when an item is removed from the cart
+    void releaseItem(int qty) 
+    {
+        quantity += qty;
+        totalItemsInStock += qty;
+    }
+    
+    // Updates sales after a successful payment
+    void finalizeSale(int qty) 
+    {
+        soldCount += qty;
+        totalItemsSold += qty;
     }
 
     int getSoldCount() 
@@ -1463,6 +1583,12 @@ class Item
 class Invoice 
 {    
     static Scanner sc = new Scanner(System.in);
+    static String phonePePin = null;
+    static String gPayPin = null;
+    static String paytmPin = null;
+    static double finalAmount = 0.0;
+    static boolean paymentSuccess = false;
+
     
     static void takeAddress()
     {
@@ -1492,6 +1618,39 @@ class Invoice
         }
         
     }
+
+    static String setUpiPin(String paymentMethod)
+    {
+        String upiPin;
+        while(true)
+        {
+            System.out.print("Set your " + paymentMethod + " UPI PIN (4 or 6 digits): ");
+            upiPin = sc.next();
+            if(upiPin.length() == 4 || upiPin.length() == 6)
+            {
+                System.out.println(ConsoleColors.GREEN + "UPI PIN set successfully for " + paymentMethod + "!" + ConsoleColors.RESET);
+                return upiPin;
+            }
+            else
+            {
+                System.out.println(ConsoleColors.RED + "Invalid PIN. UPI PIN must be 4 or 6 digits." + ConsoleColors.RESET);
+            }
+        }
+    }
+
+    static void deductamount()
+    {
+        if (User.bankBalance >= finalAmount) 
+        {
+            User.bankBalance -= finalAmount;
+            paymentSuccess = true;
+        } 
+        else 
+        {
+            System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
+        }
+    }
+    
     
     // Generate invoice and process payment
     static void generate(User user, Item item1, int qty1, Item item2, int qty2, Item item3, int qty3, Item item4, int qty4, Item item5, int qty5, Item item6, int qty6, Item item7, int qty7, Item item8, int qty8) 
@@ -1500,6 +1659,7 @@ class Invoice
         System.out.println();
         System.out.println(ConsoleColors.CYAN + ConsoleColors.ITALIC + "Free Shipping Ends Tonight! Don't Miss Out!" + ConsoleColors.RESET);
         System.out.println();
+
         // Show date & time
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -1604,14 +1764,26 @@ class Invoice
             case 1:
                 handlingFee = 3.2;
                 paymentMethod = "PhonePe";
+                if (phonePePin == null)
+                {
+                    phonePePin = setUpiPin(paymentMethod);
+                }
                 break;
             case 2:
                 handlingFee = 2.5;
                 paymentMethod = "GPay";
+                if (gPayPin == null) 
+                {
+                    gPayPin = setUpiPin(paymentMethod);
+                }
                 break;
             case 3:
                 handlingFee = 3.9;
                 paymentMethod = "Paytm";
+                if (paytmPin == null) 
+                {
+                    paytmPin = setUpiPin(paymentMethod);
+                }
                 break;
             case 4:
                 handlingFee = 0;
@@ -1630,147 +1802,162 @@ class Invoice
         System.out.println();
         System.out.println("------------------------------------");
 
-        System.out.print("Enter Mobile Number to confirm payment: ");
-        String mobile = sc.next();
-        long mobileNumber = Long.parseLong(mobile);
-        if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
-        {
-            if (mobile.equals(user.savedMobile)) 
-            {
-                user.admin.otpGenerate();
-                if(user.otpValidation())
-                {
-                    System.out.println(ConsoleColors.GREEN + "OTP Verified Successfully!" + ConsoleColors.RESET);
-                    boolean paymentSuccess = false;
-                    if (paymentMethod.equals("Wallet")) 
-                    {
-                        if (user.walletBalance >= finalAmount) 
-                        {
-                            user.walletBalance -= finalAmount;
-                            paymentSuccess = true;
-                        } 
-                        else 
-                        {
-                            System.out.println(ConsoleColors.RED + "Insufficient Wallet Balance!" + ConsoleColors.RESET);
-                        }
-                    } 
-                    else 
-                    {
-                        if (User.bankBalance >= finalAmount) 
-                        {
-                            User.bankBalance -= finalAmount;
-                            paymentSuccess = true;
-                        } 
-                        else 
-                        {
-                            System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
-                        }
-                    }
+        String enteredPin;
 
-                    if (paymentSuccess) 
-                    {
-                        for(int i=0;i<20;i++)
-                        {
-                            try
-                            {
-                                Thread.sleep(150);
-                            }
-                            catch(Exception e){}
-                            if(i%3==1)
-                                System.out.print(ConsoleColors.CYAN + "\r"+"| Processing Your payment Please Wait..." + ConsoleColors.RESET);
-                            else if(i%3==2)
-                                System.out.print(ConsoleColors.CYAN + "\r"+"/ Processing Your payment Please Wait..." + ConsoleColors.RESET);
-                            else
-                                System.out.print(ConsoleColors.CYAN + "\r"+"- Processing Your payment Please Wait..." + ConsoleColors.RESET);
-                        }
-                        System.out.println(ConsoleColors.GREEN + "\r"+"Payment Successful via " + paymentMethod + "!                 " + ConsoleColors.RESET);
-                        AdminRevenue.addRevenue(total); 
-                        
-                        if (item1 != null) 
-                        {
-                            item1.reduceQuantity(qty1);
-                            item1.autoRestock();
-                        }
-                        if (item2 != null) 
-                        {
-                            item2.reduceQuantity(qty2);
-                            item2.autoRestock();
-                        }
-                        if (item3 != null) 
-                        {
-                            item3.reduceQuantity(qty3);
-                            item3.autoRestock();
-                        }
-                        if (item4 != null) 
-                        {
-                            item4.reduceQuantity(qty4);
-                            item4.autoRestock();
-                        }
-                        if (item5 != null) 
-                        {
-                            item5.reduceQuantity(qty5);
-                            item5.autoRestock();
-                        }
-                        if (item6 != null) 
-                        {
-                            item6.reduceQuantity(qty6);
-                            item6.autoRestock();
-                        }
-                        if (item7 != null) 
-                        {
-                            item7.reduceQuantity(qty7);
-                            item7.autoRestock();
-                        }
-                        if (item8 != null) 
-                        {
-                            item8.reduceQuantity(qty8);
-                            item8.autoRestock();
-                        }
-                        
-                        user.clearCart();
-                        System.out.println("Enter your Address to deliver your purchased Products ");
-                        Invoice.takeAddress();
-                        System.out.println();
-                        System.out.println(ConsoleColors.GREEN + "Your Order has been placed successfully!" + ConsoleColors.RESET);
-                        System.out.println("Do you want to view your Invoice (y/n) ? ");
-                        char ch = sc.next().charAt(0);
-                        if (ch == 'y' || ch == 'Y')
-                        {
-                            System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n< ----- INVOICE ----- >" + ConsoleColors.RESET);
-                            System.out.println("========================================");
-                            System.out.println("Date           : " + now.format(format));
-                            System.out.println("User           : " + user.savedName);
-                            System.out.println("Payment Method : " + paymentMethod);
-                            System.out.println("Total Amount   : " + total);
-                            System.out.println("Platform Fee   : " + handlingFee);
-                            System.out.printf("Discount       : %.2f" ,discount);
-                            System.out.println();
-                            System.out.println("---------------------------------------");
-                            System.out.printf(ConsoleColors.BOLD + "FINAL AMOUNT   : %.2f" + ConsoleColors.RESET, finalAmount);
-                            System.out.println();
-                            System.out.println("========================================");
-                        }
-                        System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
-                        System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "Payment Failed!" + ConsoleColors.RESET);
-                } 
-            } 
-            else 
-            {
-                System.out.println(ConsoleColors.RED + "Mobile number mismatch! Payment failed." + ConsoleColors.RESET);
-                user.showUserMenu();
-            }
-        } 
-        else 
+
+        switch (choice) 
         {
-            System.out.println(ConsoleColors.RED + "Invalid Mobile Number! Payment failed." + ConsoleColors.RESET);
-            user.showUserMenu();
+            case 1: 
+                System.out.print("Enter your PhonePe UPI PIN to confirm payment: ");
+                enteredPin = sc.next();
+                if (enteredPin.equals(phonePePin)) 
+                {
+                    deductamount();
+                    break;
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
+                    user.showUserMenu();
+                }
+                break;
+            case 2: 
+                System.out.print("Enter your GPay UPI PIN to confirm payment: ");
+                enteredPin = sc.next();
+                if (enteredPin.equals(gPayPin)) 
+                {
+                    deductamount();
+                    break;
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
+                    user.showUserMenu();
+                }
+                break;
+            case 3: 
+                System.out.print("Enter your Paytm UPI PIN to confirm payment: ");
+                enteredPin = sc.next();
+                if (enteredPin.equals(paytmPin)) 
+                {
+                    deductamount();
+                    break;
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
+                    user.showUserMenu();
+
+                }
+                break;
+            case 4: 
+                if (user.walletBalance >= finalAmount) 
+                {
+                    user.walletBalance -= finalAmount;
+                    paymentSuccess = true;
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Insufficient Wallet Balance!" + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
+                    user.showUserMenu();
+                }
+                break;
         }
-    }
+        if (paymentSuccess) 
+        {
+            for(int i=0;i<20;i++)
+            {
+                try
+                {
+                    Thread.sleep(150);
+                }
+                catch(Exception e){}
+                if(i%3==1)
+                    System.out.print(ConsoleColors.CYAN + "\r"+"| Processing Your payment Please Wait..." + ConsoleColors.RESET);
+                else if(i%3==2)
+                    System.out.print(ConsoleColors.CYAN + "\r"+"/ Processing Your payment Please Wait..." + ConsoleColors.RESET);
+                else
+                    System.out.print(ConsoleColors.CYAN + "\r"+"- Processing Your payment Please Wait..." + ConsoleColors.RESET);
+            }
+            System.out.println(ConsoleColors.GREEN + "\r"+"Payment Successful via " + paymentMethod + "!                 " + ConsoleColors.RESET);
+            AdminRevenue.addRevenue(total); 
+            
+            if (item1 != null) 
+            {
+                item1.finalizeSale(qty1);
+                item1.autoRestock();
+            }
+            if (item2 != null) 
+            {
+                item2.finalizeSale(qty2);
+                item2.autoRestock();
+            }
+            if (item3 != null) 
+            {
+                item3.finalizeSale(qty3);
+                item3.autoRestock();
+            }
+            if (item4 != null) 
+            {
+                item4.finalizeSale(qty4);
+                item4.autoRestock();
+            }
+            if (item5 != null) 
+            {
+                item5.finalizeSale(qty5);
+                item5.autoRestock();
+            }
+            if (item6 != null) 
+            {
+                item6.finalizeSale(qty6);
+                item6.autoRestock();
+            }
+            if (item7 != null) 
+            {
+                item7.finalizeSale(qty7);
+                item7.autoRestock();
+            }
+            if (item8 != null) 
+            {
+                item8.finalizeSale(qty8);
+                item8.autoRestock();
+            }
+            
+            user.clearCart();
+            System.out.println("Enter your Address to deliver your purchased Products ");
+            Invoice.takeAddress();
+            System.out.println();
+            System.out.println(ConsoleColors.GREEN + "Your Order has been placed successfully!" + ConsoleColors.RESET);
+            System.out.println("Do you want to view your Invoice (y/n) ? ");
+            char ch = sc.next().charAt(0);
+            if (ch == 'y' || ch == 'Y')
+            {
+                System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n< ----- INVOICE ----- >" + ConsoleColors.RESET);
+                System.out.println("========================================");
+                System.out.println("Date           : " + now.format(format));
+                System.out.println("User           : " + user.savedName);
+                System.out.println("Payment Method : " + paymentMethod);
+                System.out.println("Total Amount   : " + total);
+                System.out.println("Platform Fee   : " + handlingFee);
+                System.out.printf("Discount       : %.2f" ,discount);
+                System.out.println();
+                System.out.println("---------------------------------------");
+                System.out.printf(ConsoleColors.BOLD + "FINAL AMOUNT   : %.2f" + ConsoleColors.RESET, finalAmount);
+                System.out.println();
+                System.out.println("========================================");
+            }
+            System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
+        }
+        else
+        {
+            System.out.println(ConsoleColors.RED + "Payment Failed!" + ConsoleColors.RESET);
+        } 
+    } 
 }
 
 class AdminRevenue 
@@ -2130,7 +2317,9 @@ class Smartshelf
         int choice;
         do
         {
-            System.out.println(ConsoleColors.BLUE + ConsoleColors.BOLD + "\nWelcome to SmartShelf!" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.YELLOW + "   WELCOME TO " + ConsoleColors.GREEN + "SMARTSHELF" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
             System.out.println("1. Admin Login");
             System.out.println("2. User Signup");
             System.out.println("3. User Login");
