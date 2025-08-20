@@ -28,12 +28,14 @@ class Admin
     User user;
     GroceryShelf groceryShelf;
     ElectronicsShelf electronicsShelf;
+    ToysShelf toysShelf;
 
-    Admin(User user, GroceryShelf groceryShelf, ElectronicsShelf electronicsShelf) 
+    Admin(User user, GroceryShelf groceryShelf, ElectronicsShelf electronicsShelf, ToysShelf toysShelf) 
     {
         this.user = user;
         this.groceryShelf = groceryShelf;
         this.electronicsShelf = electronicsShelf;
+        this.toysShelf = toysShelf;
     }
     Admin()
     {
@@ -180,25 +182,40 @@ class Admin
         System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getMouse().getId(), electronicsShelf.getMouse().getName(), electronicsShelf.getMouse().getQuantity(), electronicsShelf.getMouse().getSoldCount());
         System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getKeyboard().getId(), electronicsShelf.getKeyboard().getName(), electronicsShelf.getKeyboard().getQuantity(), electronicsShelf.getKeyboard().getSoldCount());
         System.out.println("----------------------------------------------------");
+
+         // Toys shelf items report
+        System.out.println(ConsoleColors.CYAN + "\nTOYS SHELF REPORT:" + ConsoleColors.RESET);
+        System.out.println();
+        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
+        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getActivityTriangle().getId(), toysShelf.getActivityTriangle().getName(), toysShelf.getActivityTriangle().getQuantity(), toysShelf.getActivityTriangle().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getRemoteControlHelicopter().getId(), toysShelf.getRemoteControlHelicopter().getName(), toysShelf.getRemoteControlHelicopter().getQuantity(), toysShelf.getRemoteControlHelicopter().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getMusicalKeyboard().getId(), toysShelf.getMusicalKeyboard().getName(), toysShelf.getMusicalKeyboard().getQuantity(), toysShelf.getMusicalKeyboard().getSoldCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getWoodenChessBoard().getId(), toysShelf.getWoodenChessBoard().getName(), toysShelf.getWoodenChessBoard().getQuantity(), toysShelf.getWoodenChessBoard().getSoldCount()); 
+        System.out.println("----------------------------------------------------");
     
         // Totals
         System.out.println();
         System.out.println(ConsoleColors.CYAN + "\nTOTAL ITEMS SOLD REPORT:" + ConsoleColors.RESET);
         int totalGrocerySold = groceryShelf.getRice().getSoldCount() + groceryShelf.getOil().getSoldCount() + groceryShelf.getSugar().getSoldCount() + groceryShelf.getMilk().getSoldCount() + groceryShelf.getSalt().getSoldCount() + groceryShelf.getWheat().getSoldCount() + groceryShelf.getBiscuits().getSoldCount() + groceryShelf.getBread().getSoldCount();
         int totalElectronicsSold = electronicsShelf.getHeadphones().getSoldCount() + electronicsShelf.getCharger().getSoldCount() + electronicsShelf.getPowerBank().getSoldCount() + electronicsShelf.getUSBCable().getSoldCount() + electronicsShelf.getBluetoothSpeaker().getSoldCount() + electronicsShelf.getSmartWatch().getSoldCount() + electronicsShelf.getMouse().getSoldCount() + electronicsShelf.getKeyboard().getSoldCount();
+        int totalToysSold = toysShelf.getActivityTriangle().getSoldCount() + toysShelf.getRemoteControlHelicopter().getSoldCount() + toysShelf.getMusicalKeyboard().getSoldCount() + toysShelf.getWoodenChessBoard().getSoldCount();
         System.out.println(ConsoleColors.YELLOW + "\nTotal Grocery Items Sold: " + totalGrocerySold + ConsoleColors.RESET);
         System.out.println(ConsoleColors.YELLOW + "Total Electronics Items Sold: " + totalElectronicsSold + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.YELLOW + "Total Toys Items Sold: " + totalToysSold + ConsoleColors.RESET);
 
         // Shelf Maintenance Status
         System.out.println(ConsoleColors.CYAN + "\nSHELF MAINTENANCE STATUS:" + ConsoleColors.RESET);
         System.out.println("Grocery Shelf Under Maintenance: " + (groceryShelf.isUnderMaintenance() ? "Yes" : "No"));
         System.out.println("Electronics Shelf Under Maintenance: " + (electronicsShelf.isUnderMaintenance() ? "Yes" : "No"));
+        System.out.println("Toys Shelf Under Maintenance: " + (toysShelf.isUnderMaintenance() ? "Yes" : "No"));
+
     }
 
     void putShelvesInMaintenance() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Set Shelf Under Maintenance ---" + ConsoleColors.RESET);
-        System.out.print("Enter shelf name (GROCERY / ELECTRONICS): ");
+        System.out.print("Enter shelf name (GROCERY / ELECTRONICS / TOYS): ");
         String shelfName = sc.nextLine().trim().toUpperCase();
         if (shelfName.equals("GROCERY")) 
         {
@@ -209,7 +226,12 @@ class Admin
         {
             electronicsShelf.setUnderMaintenance(true);
             System.out.println(ConsoleColors.PURPLE + "ELECTRONICS shelf is now under maintenance." + ConsoleColors.RESET);
-        } 
+        }
+        else if (shelfName.equals("TOYS")) 
+        {
+            toysShelf.setUnderMaintenance(true);
+            System.out.println(ConsoleColors.PURPLE + "TOYS shelf is now under maintenance." + ConsoleColors.RESET);
+        }  
         else 
             System.out.println(ConsoleColors.RED + "Invalid shelf name." + ConsoleColors.RESET);
     }
@@ -228,7 +250,12 @@ class Admin
         {
             electronicsShelf.setUnderMaintenance(false);
             System.out.println(ConsoleColors.GREEN + "ELECTRONICS shelf maintenance removed." + ConsoleColors.RESET);
-        } 
+        }
+        else if (shelfName.equals("TOYS")) 
+        {
+            toysShelf.setUnderMaintenance(false);
+            System.out.println(ConsoleColors.PURPLE + "TOYS shelf maintenance removed." + ConsoleColors.RESET);
+        }  
         else 
             System.out.println(ConsoleColors.RED + "Invalid shelf name." + ConsoleColors.RESET);
     }
@@ -267,11 +294,13 @@ class User
 
     GroceryShelf groceryShelf;
     ElectronicsShelf electronicsShelf;
+    ToysShelf toysShelf;
 
-    User(GroceryShelf groceryShelf, ElectronicsShelf electronicsShelf)
+    User(GroceryShelf groceryShelf, ElectronicsShelf electronicsShelf, ToysShelf toysShelf)
     {
         this.groceryShelf = groceryShelf;
         this.electronicsShelf = electronicsShelf;
+        this.toysShelf = toysShelf;
     }
 
     boolean isValidPassword(String password)
@@ -507,7 +536,7 @@ class User
             System.out.println("3. Shop for Items");
             System.out.println("4. View Cart");
             System.out.println("5. Generate Invoice & Pay Bill");
-            System.out.println("6. Remove Items from Cart");
+            System.out.println("6. Modify / Remove Items from Cart");
             System.out.println("7. Logout");
             System.out.print("Enter option: ");
             choice = sc.nextInt();
@@ -525,6 +554,7 @@ class User
                     shopForItems();
                     break;
                 case 4:
+                    System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- View Cart ---" + ConsoleColors.RESET);
                     viewCart();
                     break;
                 case 5:
@@ -535,7 +565,7 @@ class User
                     break;
                 case 7:
                     System.out.println("Logging out...");
-                    break;
+                    return;
                 default:
                     System.out.println(ConsoleColors.RED + "Invalid option. Please try again." + ConsoleColors.RESET);
             }
@@ -585,7 +615,8 @@ class User
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Shop for Items ---" + ConsoleColors.RESET);
         System.out.println("1. Grocery Shelf");
         System.out.println("2. Electronics Shelf");
-        System.out.println("3. Back to User Menu");
+        System.out.println("3. Toys Shelf");
+        System.out.println("4. Back to User Menu");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
         sc.nextLine(); 
@@ -844,6 +875,7 @@ class User
                         qty3 = electronicsQty;
                         System.out.println(ConsoleColors.GREEN + electronicsSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
                     }
+                    
                     else if (cartItem4 == null)
                     {
                         cartItem4 = electronicsSelectedItem;
@@ -879,7 +911,151 @@ class User
                 }
                 break;
             case 3:
+                toysShelf.displayItems();
+                if(toysShelf.isUnderMaintenance())
+                {
+                    System.out.println(ConsoleColors.RED + "Toys Shelf is currently under maintenance. Please try again later." + ConsoleColors.RESET);
+                    return;
+                }
+                System.out.print("Enter item ID to purchase : ");
+                int toysItemId = sc.nextInt();
+                Item toysSelectedItem = toysShelf.selectItemById(toysItemId);
+                if (toysSelectedItem != null) 
+                {
+                    System.out.print("Enter quantity: ");
+                    int toyQty = sc.nextInt();
+                    sc.nextLine();
+                    if(toyQty > toysSelectedItem.getQuantity())
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient stock for " + toysSelectedItem.getName() + ". Available quantity: " + toysSelectedItem.getQuantity() + ConsoleColors.RESET);
+                        System.out.print("Do you want to add the available quantity to your cart? (y/n) ");
+                        char ch = sc.next().charAt(0);
+                        if(ch == 'y' || ch == 'Y')
+                        {
+                            toyQty = toysSelectedItem.getQuantity();
+                        }
+                        else if(ch == 'n' || ch == 'N')
+                        {
+                            System.out.print("Do you want to enter the quantity again? (y/n) ");
+                            char ch1 = sc.next().charAt(0);
+                            if(ch1 == 'y' || ch1 == 'Y')
+                            {
+                                System.out.print("Enter quantity: ");
+                                toyQty = sc.nextInt();
+                            }
+                            else if(ch1 == 'n' || ch1 == 'N')
+                            {
+                                System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                            else
+                            {
+                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                                shopForItems();
+                            }
+                        }
+                        else
+                        {
+                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to Shop Menu...." + ConsoleColors.RESET);
+                            shopForItems();
+                        }
+                    }
+                    // Check if item already in cart
+                    if (cartItem1 != null && cartItem1.getId() == toysSelectedItem.getId())
+                    { 
+                        qty1 += toyQty; 
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem2 != null && cartItem2.getId() == toysSelectedItem.getId())
+                    {
+                        qty2 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem3 != null && cartItem3.getId() == toysSelectedItem.getId())
+                    {
+                        qty3 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem4 != null && cartItem4.getId() == toysSelectedItem.getId())
+                    {
+                        qty4 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem5 != null && cartItem5.getId() == toysSelectedItem.getId())
+                    {
+                        qty5 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem6 != null && cartItem6.getId() == toysSelectedItem.getId())
+                    {
+                        qty6 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem7 != null && cartItem7.getId() == toysSelectedItem.getId())
+                    {
+                        qty7 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem8 != null && cartItem8.getId() == toysSelectedItem.getId())
+                    {
+                        qty8 += toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " quantity updated in cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem1 == null) 
+                    {
+                        cartItem1 = toysSelectedItem;
+                        qty1 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }   
+                    else if (cartItem2 == null)
+                    {
+                        cartItem2 = toysSelectedItem;
+                        qty2 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem3 == null)
+                    {
+                        cartItem3 = toysSelectedItem;
+                        qty3 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem4 == null)
+                    {
+                        cartItem4 = toysSelectedItem;
+                        qty4 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem5 == null) 
+                    {
+                        cartItem5 = toysSelectedItem;
+                        qty5 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }   
+                    else if (cartItem6 == null)
+                    {
+                        cartItem6 = toysSelectedItem;
+                        qty6 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem7 == null)
+                    {
+                        cartItem7 = toysSelectedItem;
+                        qty7 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else if (cartItem8 == null)
+                    {
+                        cartItem8 = toysSelectedItem;
+                        qty8 = toyQty;
+                        System.out.println(ConsoleColors.GREEN + toysSelectedItem.getName() + " added to cart." + ConsoleColors.RESET);
+                    }
+                    else 
+                        System.out.println(ConsoleColors.YELLOW + "OOPS! Cart is full!" + ConsoleColors.RESET);
+                }
+                break;
+            case 4:
                 showUserMenu();
+                break;
             default:
                 System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
         }
@@ -887,7 +1063,6 @@ class User
 
     void viewCart() 
     {
-        System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- View Cart ---" + ConsoleColors.RESET);
         if (cartItem1 != null) 
         {
             System.out.println("Item 1: " + cartItem1.getName() + " x" + qty1);
@@ -936,544 +1111,223 @@ class User
         Invoice.generate(this, cartItem1, qty1, cartItem2, qty2, cartItem3, qty3, cartItem4, qty4, cartItem5, qty5, cartItem6, qty6, cartItem7, qty7, cartItem8, qty8);
     }
 
+    void modifyOrRemoveItem(int itemNumber) 
+    {
+        Item selectedItem = null;
+
+        switch(itemNumber) 
+        {
+            case 1: 
+                selectedItem = cartItem1; 
+                break;
+            case 2: 
+                selectedItem = cartItem2; 
+                break;
+            case 3: 
+                selectedItem = cartItem3; 
+                break;
+            case 4: 
+                selectedItem = cartItem4; 
+                break;
+            case 5: 
+                selectedItem = cartItem5; 
+                break;
+            case 6: 
+                selectedItem = cartItem6; 
+                break;
+            case 7: 
+                selectedItem = cartItem7; 
+                break;
+            case 8: 
+                selectedItem = cartItem8; 
+                break;
+        }
+
+        System.out.println("1. Update Quantity of " + selectedItem.getName());
+        System.out.println("2. Remove " + selectedItem.getName() + " from cart");
+        System.out.print("Enter choice: ");
+        int choice = sc.nextInt();
+
+        if (choice == 1) 
+        {
+            System.out.print("Enter new quantity: ");
+            int newQty = sc.nextInt();
+            if (newQty > 0 && newQty <= selectedItem.getQuantity()) 
+            {
+                switch(itemNumber) 
+                {
+                    case 1: 
+                        qty1 = newQty; 
+                        break;
+                    case 2:
+                        qty2 = newQty; 
+                        break;
+                    case 3: 
+                        qty3 = newQty; 
+                        break;
+                    case 4: 
+                        qty4 = newQty; 
+                        break;
+                    case 5: 
+                        qty5 = newQty; 
+                        break;
+                    case 6: 
+                        qty6 = newQty; 
+                        break;
+                    case 7: 
+                        qty7 = newQty; 
+                        break;
+                    case 8: 
+                        qty8 = newQty;
+                        break;
+                }
+                System.out.println(ConsoleColors.GREEN + "Quantity updated." + ConsoleColors.RESET);
+            } 
+            else 
+            {
+                System.out.println(ConsoleColors.RED + "Invalid quantity. Available stock: " + selectedItem.getQuantity() + ConsoleColors.RESET);
+            }
+        } 
+        else if (choice == 2) 
+        {
+            System.out.print("Are you sure you want to remove " + selectedItem.getName() + " from cart? (y/n)");
+            char confirm = sc.next().charAt(0);
+            if (confirm == 'y' || confirm == 'Y') 
+            {
+                switch(itemNumber) 
+                {
+                    case 1: 
+                        cartItem1 = null; 
+                        qty1 = 0; 
+                        break;
+                    case 2: 
+                        cartItem2 = null; 
+                        qty2 = 0; 
+                        break;
+                    case 3: 
+                        cartItem3 = null; 
+                        qty3 = 0; 
+                        break;
+                    case 4: 
+                        cartItem4 = null; 
+                        qty4 = 0; 
+                        break;
+                    case 5: 
+                        cartItem5 = null; 
+                        qty5 = 0; 
+                        break;
+                    case 6: 
+                        cartItem6 = null; 
+                        qty6 = 0; 
+                        break;
+                    case 7: 
+                        cartItem7 = null; 
+                        qty7 = 0; 
+                        break;
+                    case 8: 
+                        cartItem8 = null; 
+                        qty8 = 0; 
+                        break;
+                }
+                System.out.println(ConsoleColors.GREEN + "Item removed." + ConsoleColors.RESET);
+            } 
+            else if(confirm == 'n' || confirm == 'N')
+            {
+                System.out.println(ConsoleColors.YELLOW + "Item not Removed." + ConsoleColors.RESET);
+            }
+            else
+            {
+                System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+            }
+        } 
+        else 
+        {
+            System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+        }
+    }
+
     void removeItemFromCart()
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Remove Items from Cart ---" + ConsoleColors.RESET);
-        if (cartItem1 == null && cartItem2 == null && cartItem3 == null && cartItem4 == null && cartItem5 == null && cartItem6 == null && cartItem7 == null && cartItem8 == null) 
+        if (cartItem1 == null && cartItem2 == null && cartItem3 == null && cartItem4 == null && cartItem5 == null && cartItem6 == null && cartItem7 == null && cartItem8 == null)
         {
             System.out.println(ConsoleColors.YELLOW + "Cart is empty. Nothing to remove." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to User Menu...." + ConsoleColors.RESET);
             return;
         }
-
+    
         // Display cart items
         System.out.println(ConsoleColors.YELLOW + "Items in Cart:" + ConsoleColors.RESET);
-        if (cartItem1 != null)
-            System.out.println("1. " + cartItem1.getName() + " x" + qty1);
-        if (cartItem2 != null)
-            System.out.println("2. " + cartItem2.getName() + " x" + qty2);
-        if (cartItem3 != null)
-            System.out.println("3. " + cartItem3.getName() + " x" + qty3);
-        if (cartItem4 != null)
-            System.out.println("4. " + cartItem4.getName() + " x" + qty4);
-        if (cartItem5 != null) 
-            System.out.println("5. " + cartItem5.getName() + " x" + qty5);
-        if (cartItem6 != null) 
-            System.out.println("6. " + cartItem6.getName() + " x" + qty6);
-        if( cartItem7 != null)
-            System.out.println("7. " + cartItem7.getName() + " x" + qty7);
-        if( cartItem8 != null)
-            System.out.println("8. " + cartItem8.getName() + " x" + qty8);
+        viewCart();
         System.out.println();
         System.out.println(ConsoleColors.ITALIC + "------ Options -----" + ConsoleColors.RESET);
-        System.out.println("1. Remove Item 1");
-        System.out.println("2. Remove Item 2");
-        System.out.println("3. Remove Item 3");
-        System.out.println("4. Remove Item 4");
-        System.out.println("5. Remove Item 5");
-        System.out.println("6. Remove Item 6");
-        System.out.println("7. Remove Item 7");
-        System.out.println("8. Remove Item 8");
-        System.out.println("9. Clear Cart");
-        System.out.println("10. Back to User Menu");
+        System.out.println("1. Enter the Item Number you want to modify/remove");
+        System.out.println("2. Clear Entire Cart");
+        System.out.println("3. Back to User Menu");
         System.out.print("Enter your choice: ");
         int choice = sc.nextInt();
+    
         switch (choice)
         {
             case 1:
-                if (cartItem1 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 1 in cart ");
-                    System.out.println("2. Do you want to Remove Item 1 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice1 = sc.nextInt();
-                    switch(choice1)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 1: ");
-                            int newQty = sc.nextInt();
-                            if(newQty > 0 && newQty <= cartItem1.getQuantity())
-                            {
-                                qty1 = newQty;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem1.getName() + " updated to " + qty1 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty > cartItem1.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem1.getName() + " from cart? (y/n)");
-                            char confirm = sc.next().charAt(0);
-                            String removedname1 = cartItem1.getName();
-                            if (confirm == 'y' || confirm == 'Y')
-                            {
-                                cartItem1 = null;
-                                qty1 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname1 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm == 'n' || confirm == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 1 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem1 != null) 
+                    modifyOrRemoveItem(1);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 1 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 2:
-                if (cartItem2 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 2 in cart ");
-                    System.out.println("2. Do you want to Remove Item 2 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice2 = sc.nextInt();
-                    switch(choice2)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 2: ");
-                            int newQty2 = sc.nextInt();
-                            if(newQty2 > 0 && newQty2 <= cartItem2.getQuantity())
-                            {
-                                qty2 = newQty2;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem2.getName() + " updated to " + qty2 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty2 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty2 > cartItem2.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem2.getName() + " from cart? (y/n)");
-                            char confirm2 = sc.next().charAt(0);
-                            String removedname2 = cartItem2.getName();
-                            if (confirm2 == 'y' || confirm2 == 'Y')
-                            {
-                                cartItem2 = null;
-                                qty2 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname2 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm2 == 'n' || confirm2 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 2 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem2 != null) 
+                    modifyOrRemoveItem(2);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 2 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 3:
-                if (cartItem3 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 3 in cart ");
-                    System.out.println("2. Do you want to Remove Item 3 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice3 = sc.nextInt();
-                    switch(choice3)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 3: ");
-                            int newQty3 = sc.nextInt();
-                            if(newQty3 > 0 && newQty3 <= cartItem3.getQuantity())
-                            {
-                                qty3 = newQty3;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem3.getName() + " updated to " + qty3 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty3 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty3 > cartItem3.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem3.getName() + " from cart? (y/n)");
-                            char confirm3 = sc.next().charAt(0);
-                            String removedname3 = cartItem3.getName();
-                            if (confirm3 == 'y' || confirm3 == 'Y')
-                            {
-                                cartItem3 = null;
-                                qty3 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname3 + " from cart Successfully." + ConsoleColors.RESET);  
-                            }
-                            else if (confirm3 == 'n' || confirm3 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 3 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem3 != null) 
+                    modifyOrRemoveItem(3);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 3 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 4:
-                if (cartItem4 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 4 in cart ");
-                    System.out.println("2. Do you want to Remove Item 4 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice4 = sc.nextInt();
-                    switch(choice4)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 4: ");
-                            int newQty4 = sc.nextInt();
-                            if(newQty4 > 0 && newQty4 <= cartItem4.getQuantity())
-                            {
-                                qty4 = newQty4;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem4.getName() + " updated to " + qty4 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty4 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty4 > cartItem4.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem4.getName() + " from cart? (y/n)");
-                            char confirm4 = sc.next().charAt(0);
-                            String removedname4 = cartItem4.getName();
-                            if (confirm4 == 'y' || confirm4 == 'Y')
-                            {
-                                cartItem4 = null;
-                                qty4 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname4 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm4 == 'n' || confirm4 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 4 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem4 != null) 
+                    modifyOrRemoveItem(4);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 4 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 5:
-                if (cartItem5 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 5 in cart ");
-                    System.out.println("2. Do you want to Remove Item 5 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice5 = sc.nextInt();
-                    switch(choice5)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 5: ");
-                            int newQty5 = sc.nextInt();
-                            if(newQty5 > 0 && newQty5 <= cartItem5.getQuantity())
-                            {
-                                qty5 = newQty5;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem5.getName() + " updated to " + qty5 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty5 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty5 > cartItem5.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem5.getName() + " from cart? (y/n)");
-                            char confirm = sc.next().charAt(0);
-                            String removedname5 = cartItem5.getName();
-                            if (confirm == 'y' || confirm == 'Y')
-                            {
-                                cartItem5 = null;
-                                qty5 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname5 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm == 'n' || confirm == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 5 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem5 != null) 
+                    modifyOrRemoveItem(5);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 5 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 6:
-                if (cartItem6 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 6 in cart ");
-                    System.out.println("2. Do you want to Remove Item 6 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice6 = sc.nextInt();
-                    switch(choice6)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 6: ");
-                            int newQty6 = sc.nextInt();
-                            if(newQty6 > 0 && newQty6 <= cartItem2.getQuantity())
-                            {
-                                qty6 = newQty6;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem6.getName() + " updated to " + qty6 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty6 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty6 > cartItem2.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem6.getName() + " from cart? (y/n)");
-                            char confirm6 = sc.next().charAt(0);
-                            String removedname6 = cartItem2.getName();
-                            if (confirm6 == 'y' || confirm6 == 'Y')
-                            {
-                                cartItem6 = null;
-                                qty6 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname6 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm6 == 'n' || confirm6 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 6 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem6 != null) 
+                    modifyOrRemoveItem(6);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 6 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 7:
-                if (cartItem7 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 7 in cart ");
-                    System.out.println("2. Do you want to Remove Item 7 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice7 = sc.nextInt();
-                    switch(choice7)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 7: ");
-                            int newQty7 = sc.nextInt();
-                            if(newQty7 > 0 && newQty7 <= cartItem3.getQuantity())
-                            {
-                                qty7 = newQty7;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem7.getName() + " updated to " + qty7 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty7 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty7 > cartItem7.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem7.getName() + " from cart? (y/n)");
-                            char confirm7 = sc.next().charAt(0);
-                            String removedname7 = cartItem7.getName();
-                            if (confirm7 == 'y' || confirm7 == 'Y')
-                            {
-                                cartItem7 = null;
-                                qty7 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname7 + " from cart Successfully." + ConsoleColors.RESET);  
-                            }
-                            else if (confirm7 == 'n' || confirm7 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 7 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem7 != null) 
+                    modifyOrRemoveItem(7);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 7 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 8:
-                if (cartItem8 != null)
-                {
-                    System.out.println("1. Do you want to Update Quantity of Item 8 in cart ");
-                    System.out.println("2. Do you want to Remove Item 8 from cart");
-                    System.out.print("Enter choice: ");
-                    int choice8 = sc.nextInt();
-                    switch(choice8)
-                    {
-                        case 1:
-                            System.out.print("Enter new quantity for Item 8: ");
-                            int newQty8 = sc.nextInt();
-                            if(newQty8 > 0 && newQty8 <= cartItem8.getQuantity())
-                            {
-                                qty8 = newQty8;
-                                System.out.println(ConsoleColors.GREEN + "Quantity of " + cartItem8.getName() + " updated to " + qty8 + " in cart." + ConsoleColors.RESET);
-                            }
-                            else if(newQty8 <= 0)
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity must be greater than 0." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else if(newQty8 > cartItem8.getQuantity())
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid quantity. Quantity cannot be greater than available stock." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            break;
-                        case 2:
-                            System.out.print("Are you sure you want to remove " + cartItem8.getName() + " from cart? (y/n)");
-                            char confirm8 = sc.next().charAt(0);
-                            String removedname8 = cartItem8.getName();
-                            if (confirm8 == 'y' || confirm8 == 'Y')
-                            {
-                                cartItem8 = null;
-                                qty8 = 0;
-                                System.out.println(ConsoleColors.GREEN + "Removed " + removedname8 + " from cart Successfully." + ConsoleColors.RESET);
-                            }
-                            else if (confirm8 == 'n' || confirm8 == 'N')
-                            {
-                                System.out.println(ConsoleColors.YELLOW + "Item not removed from cart." + ConsoleColors.RESET);
-                                showUserMenu();
-                            }
-                            else
-                            {
-                                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                                return;
-                            }
-                            break;
-                        default:
-                            System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                            return;
-                    }
-                }
-                else
-                {
-                    System.out.println(ConsoleColors.RED + "No Item 8 in cart to remove." + ConsoleColors.RESET);
-                    showUserMenu();
-                }
+                if (cartItem8 != null) 
+                    modifyOrRemoveItem(8);
+                else 
+                    System.out.println(ConsoleColors.RED + "No Item 8 in cart to remove" + ConsoleColors.RESET);
                 break;
             case 9:
                 clearCart();
                 System.out.println(ConsoleColors.GREEN + "Cart cleared successfully." + ConsoleColors.RESET);
                 break;
             case 10:
-                System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to User Menu...." + ConsoleColors.RESET);
-                return;
+                showUserMenu();
             default:
-                System.out.println(ConsoleColors.RED + "Invalid choice. Returning to User Menu...." + ConsoleColors.RESET);
-                return;
+                System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+                showUserMenu();
         }
-    }
+    } 
     
-
     void clearCart() 
     {
         cartItem1 = null;
@@ -2190,6 +2044,79 @@ class ElectronicsShelf extends Shelf
     }
 }
 
+class ToysShelf extends Shelf
+{
+    private Item ActivityTriangle = new Item("Activity Triangle", 2869, 9,"N/A",150);
+    private Item RemoteControlHelicopter = new Item("RC Helicopter", 450, 19,"N/A",50);
+    private Item Musicalkeyboard = new Item("Musical Keyboard", 249, 9,"N/A",50);
+    private Item WoodenChessBoard = new Item("Wooden Chess Board", 279, 9,"N/A",40);
+
+    // Getters for Each Item
+
+    Item getActivityTriangle()
+    {
+        return ActivityTriangle;
+    }
+    Item getRemoteControlHelicopter()
+    {
+        return RemoteControlHelicopter;
+    }
+    Item getMusicalKeyboard()
+    {
+        return Musicalkeyboard;
+    }
+    Item getWoodenChessBoard()
+    {
+        return WoodenChessBoard;
+    }
+
+    ToysShelf()
+    {
+        super(" TOYS ");
+    }
+
+    void displayItems() 
+    {
+
+        System.out.println(ConsoleColors.CYAN + "\n< --- Toys Shelf --- >" + ConsoleColors.RESET);
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-15s%n", "ID", "Item Name", "Price", "Quantity", "Expiry Date");
+        System.out.println("---------------------------------------------------------------------");
+
+        ActivityTriangle.displayItem();
+        RemoteControlHelicopter.displayItem();
+        Musicalkeyboard.displayItem();
+        WoodenChessBoard.displayItem();
+
+    }
+
+    Item selectItemById(int id) 
+    {
+
+        if (id == ActivityTriangle.getId()) 
+        {
+            return ActivityTriangle;
+        }
+        else if (id == RemoteControlHelicopter.getId()) 
+        {
+            return RemoteControlHelicopter;
+        }
+        else if (id == Musicalkeyboard.getId())
+        {
+            return Musicalkeyboard;
+        }
+        else if (id == WoodenChessBoard.getId()) 
+        {
+            return WoodenChessBoard;
+        }
+        else 
+        {
+            System.out.println(ConsoleColors.RED + "Item ID not found." + ConsoleColors.RESET);
+            return null;
+        }
+        
+    }
+}
+
 class Smartshelf
 {
     public static void main(String[] args) 
@@ -2197,8 +2124,9 @@ class Smartshelf
         Scanner sc = new Scanner(System.in);
         GroceryShelf groceryShelf = new GroceryShelf();
         ElectronicsShelf electronicsShelf = new ElectronicsShelf();
-        User user = new User(groceryShelf, electronicsShelf);
-        Admin admin = new Admin(user, groceryShelf, electronicsShelf);
+        ToysShelf toysShelf = new ToysShelf();
+        User user = new User(groceryShelf, electronicsShelf, toysShelf);
+        Admin admin = new Admin(user, groceryShelf, electronicsShelf, toysShelf);
         int choice;
         do
         {
