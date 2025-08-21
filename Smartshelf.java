@@ -171,28 +171,28 @@ class Admin
         // Electronics shelf items report
         System.out.println(ConsoleColors.CYAN + "\nELECTRONICS SHELF REPORT:" + ConsoleColors.RESET);
         System.out.println();
-        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
-        System.out.println("----------------------------------------------------");
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getHeadphones().getId(), electronicsShelf.getHeadphones().getName(), electronicsShelf.getHeadphones().getQuantity(), electronicsShelf.getHeadphones().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getCharger().getId(), electronicsShelf.getCharger().getName(), electronicsShelf.getCharger().getQuantity(), electronicsShelf.getCharger().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getPowerBank().getId(), electronicsShelf.getPowerBank().getName(), electronicsShelf.getPowerBank().getQuantity(), electronicsShelf.getPowerBank().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getUSBCable().getId(), electronicsShelf.getUSBCable().getName(), electronicsShelf.getUSBCable().getQuantity(), electronicsShelf.getUSBCable().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getBluetoothSpeaker().getId(), electronicsShelf.getBluetoothSpeaker().getName(), electronicsShelf.getBluetoothSpeaker().getQuantity(), electronicsShelf.getBluetoothSpeaker().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getSmartWatch().getId(), electronicsShelf.getSmartWatch().getName(), electronicsShelf.getSmartWatch().getQuantity(), electronicsShelf.getSmartWatch().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getMouse().getId(), electronicsShelf.getMouse().getName(), electronicsShelf.getMouse().getQuantity(), electronicsShelf.getMouse().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", electronicsShelf.getKeyboard().getId(), electronicsShelf.getKeyboard().getName(), electronicsShelf.getKeyboard().getQuantity(), electronicsShelf.getKeyboard().getSoldCount());
-        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-18s%n", "ID", "Item Name", "Remaining", "Sold", "Restock Count");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getHeadphones().getId(), electronicsShelf.getHeadphones().getName(), electronicsShelf.getHeadphones().getQuantity(), electronicsShelf.getHeadphones().getSoldCount(), electronicsShelf.getHeadphones().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getCharger().getId(), electronicsShelf.getCharger().getName(), electronicsShelf.getCharger().getQuantity(), electronicsShelf.getCharger().getSoldCount(), electronicsShelf.getCharger().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getPowerBank().getId(), electronicsShelf.getPowerBank().getName(), electronicsShelf.getPowerBank().getQuantity(), electronicsShelf.getPowerBank().getSoldCount(), electronicsShelf.getPowerBank().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getUSBCable().getId(), electronicsShelf.getUSBCable().getName(), electronicsShelf.getUSBCable().getQuantity(), electronicsShelf.getUSBCable().getSoldCount(), electronicsShelf.getUSBCable().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getBluetoothSpeaker().getId(), electronicsShelf.getBluetoothSpeaker().getName(), electronicsShelf.getBluetoothSpeaker().getQuantity(), electronicsShelf.getBluetoothSpeaker().getSoldCount(), electronicsShelf.getBluetoothSpeaker().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getSmartWatch().getId(), electronicsShelf.getSmartWatch().getName(), electronicsShelf.getSmartWatch().getQuantity(), electronicsShelf.getSmartWatch().getSoldCount(), electronicsShelf.getSmartWatch().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getMouse().getId(), electronicsShelf.getMouse().getName(), electronicsShelf.getMouse().getQuantity(), electronicsShelf.getMouse().getSoldCount(), electronicsShelf.getMouse().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", electronicsShelf.getKeyboard().getId(), electronicsShelf.getKeyboard().getName(), electronicsShelf.getKeyboard().getQuantity(), electronicsShelf.getKeyboard().getSoldCount(), electronicsShelf.getKeyboard().getRestockCount());
+        System.out.println("----------------------------------------------------------------------");
 
          // Toys shelf items report
         System.out.println(ConsoleColors.CYAN + "\nTOYS SHELF REPORT:" + ConsoleColors.RESET);
         System.out.println();
-        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
-        System.out.println("----------------------------------------------------");
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getActivityTriangle().getId(), toysShelf.getActivityTriangle().getName(), toysShelf.getActivityTriangle().getQuantity(), toysShelf.getActivityTriangle().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getRemoteControlHelicopter().getId(), toysShelf.getRemoteControlHelicopter().getName(), toysShelf.getRemoteControlHelicopter().getQuantity(), toysShelf.getRemoteControlHelicopter().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getMusicalKeyboard().getId(), toysShelf.getMusicalKeyboard().getName(), toysShelf.getMusicalKeyboard().getQuantity(), toysShelf.getMusicalKeyboard().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", toysShelf.getWoodenChessBoard().getId(), toysShelf.getWoodenChessBoard().getName(), toysShelf.getWoodenChessBoard().getQuantity(), toysShelf.getWoodenChessBoard().getSoldCount()); 
-        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-18s%n", "ID", "Item Name", "Remaining", "Sold", "Restock Count");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", toysShelf.getActivityTriangle().getId(), toysShelf.getActivityTriangle().getName(), toysShelf.getActivityTriangle().getQuantity(), toysShelf.getActivityTriangle().getSoldCount(), toysShelf.getActivityTriangle().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", toysShelf.getRemoteControlHelicopter().getId(), toysShelf.getRemoteControlHelicopter().getName(), toysShelf.getRemoteControlHelicopter().getQuantity(), toysShelf.getRemoteControlHelicopter().getSoldCount(), toysShelf.getRemoteControlHelicopter().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", toysShelf.getMusicalKeyboard().getId(), toysShelf.getMusicalKeyboard().getName(), toysShelf.getMusicalKeyboard().getQuantity(), toysShelf.getMusicalKeyboard().getSoldCount(), toysShelf.getMusicalKeyboard().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", toysShelf.getWoodenChessBoard().getId(), toysShelf.getWoodenChessBoard().getName(), toysShelf.getWoodenChessBoard().getQuantity(), toysShelf.getWoodenChessBoard().getSoldCount(), toysShelf.getWoodenChessBoard().getRestockCount()); 
+        System.out.println("----------------------------------------------------------------------");
     
         // Totals
         System.out.println();
