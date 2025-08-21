@@ -1,6 +1,6 @@
 # SmartShelf Console Application
 
-SmartShelf is a console-based Java Mini Project that enables shop management system for Grocery and Electronics. It supports both Admin and User roles, enabling inventory management, purchase flow, and reporting in a colorful console interface.
+SmartShelf is a console-based Java Mini Project that enables shop management system for Grocery, Electronics and Toys. It supports both Admin and User roles, enabling inventory management, purchase flow, and reporting in a colorful console interface.
 
 ## Features
 
