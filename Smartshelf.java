@@ -155,17 +155,17 @@ class Admin
         // Grocery shelf items report
         System.out.println(ConsoleColors.CYAN + "\nGROCERY SHELF REPORT:" + ConsoleColors.RESET);
         System.out.println();
-        System.out.printf("%-5s | %-20s | %-10s | %-10s%n", "ID", "Item Name", "Remaining", "Sold");
-        System.out.println("----------------------------------------------------");
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getRice().getId(), groceryShelf.getRice().getName(), groceryShelf.getRice().getQuantity(), groceryShelf.getRice().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getOil().getId(), groceryShelf.getOil().getName(), groceryShelf.getOil().getQuantity(), groceryShelf.getOil().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getSugar().getId(), groceryShelf.getSugar().getName(), groceryShelf.getSugar().getQuantity(), groceryShelf.getSugar().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getMilk().getId(), groceryShelf.getMilk().getName(), groceryShelf.getMilk().getQuantity(), groceryShelf.getMilk().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getSalt().getId(), groceryShelf.getSalt().getName(), groceryShelf.getSalt().getQuantity(), groceryShelf.getSalt().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getWheat().getId(), groceryShelf.getWheat().getName(), groceryShelf.getWheat().getQuantity(), groceryShelf.getWheat().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getBiscuits().getId(), groceryShelf.getBiscuits().getName(), groceryShelf.getBiscuits().getQuantity(), groceryShelf.getBiscuits().getSoldCount());
-        System.out.printf("%-5d | %-20s | %-10d | %-10d%n", groceryShelf.getBread().getId(), groceryShelf.getBread().getName(), groceryShelf.getBread().getQuantity(), groceryShelf.getBread().getSoldCount());
-        System.out.println("----------------------------------------------------");
+        System.out.printf("%-5s | %-20s | %-10s | %-10s | %-18s%n", "ID", "Item Name", "Remaining", "Sold", "Restock Count");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getRice().getId(), groceryShelf.getRice().getName(), groceryShelf.getRice().getQuantity(), groceryShelf.getRice().getSoldCount(), groceryShelf.getRice().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getOil().getId(), groceryShelf.getOil().getName(), groceryShelf.getOil().getQuantity(), groceryShelf.getOil().getSoldCount(), groceryShelf.getOil().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getSugar().getId(), groceryShelf.getSugar().getName(), groceryShelf.getSugar().getQuantity(), groceryShelf.getSugar().getSoldCount(), groceryShelf.getSugar().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getMilk().getId(), groceryShelf.getMilk().getName(), groceryShelf.getMilk().getQuantity(), groceryShelf.getMilk().getSoldCount(), groceryShelf.getMilk().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getSalt().getId(), groceryShelf.getSalt().getName(), groceryShelf.getSalt().getQuantity(), groceryShelf.getSalt().getSoldCount(), groceryShelf.getSalt().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getWheat().getId(), groceryShelf.getWheat().getName(), groceryShelf.getWheat().getQuantity(), groceryShelf.getWheat().getSoldCount(), groceryShelf.getWheat().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getBiscuits().getId(), groceryShelf.getBiscuits().getName(), groceryShelf.getBiscuits().getQuantity(), groceryShelf.getBiscuits().getSoldCount(), groceryShelf.getBiscuits().getRestockCount());
+        System.out.printf("%-5d | %-20s | %-10d | %-10d | %-18s%n", groceryShelf.getBread().getId(), groceryShelf.getBread().getName(), groceryShelf.getBread().getQuantity(), groceryShelf.getBread().getSoldCount(), groceryShelf.getBread().getRestockCount());
+        System.out.println("----------------------------------------------------------------------");
 
         
         // Electronics shelf items report
@@ -239,7 +239,7 @@ class Admin
     void removeShelvesFromMaintenance() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Remove Shelf Maintenance ---" + ConsoleColors.RESET);
-        System.out.print("Enter shelf name (GROCERY / ELECTRONICS): ");
+        System.out.print("Enter shelf name (GROCERY / ELECTRONICS / TOYS): ");
         String shelfName = sc.nextLine().trim().toUpperCase();
         if (shelfName.equals("GROCERY")) 
         {
@@ -269,7 +269,6 @@ class User
     String savedPassword;
     String savedMobile;
     String savedName;
-    boolean isLoggedIn = false;
 
     double walletBalance = 0.0;
     static double bankBalance = 20000;
@@ -340,11 +339,9 @@ class User
 
     boolean otpValidation() 
     {
-
-        int attempts = 3; 
         boolean otpVerified = false;
 
-        for (int i = 1; i <= attempts; i++) 
+        for (int i = 1; i <= 3; i++) 
         {
             System.out.print("Enter OTP: ");
             int enteredOtp = sc.nextInt();
@@ -358,10 +355,10 @@ class User
             else 
             {
                 System.out.println(ConsoleColors.RED + "Invalid OTP! Please try again." + ConsoleColors.RESET);
-                int attemptsLeft = attempts - i;
-                if (attemptsLeft > 0) 
+                int j = 3-i;
+                if (j > 0) 
                 {
-                    System.out.println(ConsoleColors.YELLOW + attemptsLeft + " attempts left." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.YELLOW + j + " attempts left." + ConsoleColors.RESET);
                 } 
                 else 
                 {
@@ -400,10 +397,7 @@ class User
         {
             admin.otpGenerate();
             if(otpValidation())
-            {
                 System.out.println(ConsoleColors.GREEN + "Account created successfully!" + ConsoleColors.RESET);
-                isLoggedIn = true;
-            }
         }
         else
         {
@@ -419,17 +413,17 @@ class User
         String uname = sc.next();
         System.out.print("Enter password: ");
         String pass = sc.next();
-        if (!isLoggedIn)
+        if (savedUsername == null || savedPassword == null) 
         {
-            System.out.println(ConsoleColors.RED + "No User Found ! Create Your Account First....:)" + ConsoleColors.RESET);
+            System.out.println("No user found! Create your account first.");
             return;
         }
         if (uname.equals(savedUsername) && pass.equals(savedPassword)) 
         {
-            isLoggedIn = true; 
             System.out.println(ConsoleColors.GREEN + "Login successful!" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.CYAN + "Welcome back, " + savedName + "!" + ConsoleColors.RESET);
             showUserMenu();
+            return;
         } 
         else if(!uname.equals(savedUsername) && pass.equals(savedPassword))
         {
@@ -575,7 +569,8 @@ class User
     void viewWalletBalance() 
     {
         System.out.println(ConsoleColors.GREEN + "Your Wallet Balance : " + walletBalance + ConsoleColors.RESET);
-        System.out.println(ConsoleColors.GREEN + "Your Bank Balance : " + bankBalance + ConsoleColors.RESET);
+        System.out.printf(ConsoleColors.GREEN + "Your Bank Balance : %.2f "  + ConsoleColors.RESET, bankBalance);
+        System.out.println();
     }
     
     void addMoneyToWallet() 
@@ -1200,7 +1195,11 @@ class User
                 oldQty = qty8;
                 break;
         }
-
+        if (selectedItem == null) 
+        {
+            System.out.println(ConsoleColors.RED + "That cart slot is empty. Nothing to modify." + ConsoleColors.RESET);
+            return; 
+        }
         System.out.println("1. Update Quantity of " + selectedItem.getName());
         System.out.println("2. Remove " + selectedItem.getName() + " from cart");
         System.out.print("Enter choice: ");
@@ -1471,6 +1470,7 @@ class Item
     // Static counters for all items
     private static int totalItemsSold = 0;
     private static int totalItemsInStock = 0;
+    private int restockCount = 0;
     
     private int soldCount = 0;
 
@@ -1557,7 +1557,9 @@ class Item
             {
                 AdminRevenue.adminFunds-=restockCost;
                 quantity += restockQty;
+                //System.out.println("Quantity: "+quantity);
                 totalItemsInStock += restockQty;
+                restockCount++;
             } 
         }
     }
@@ -1578,6 +1580,11 @@ class Item
         return totalItemsInStock;
     }
 
+    int getRestockCount()
+    {
+        return restockCount;
+    }
+
 }
 
 class Invoice 
@@ -1586,7 +1593,6 @@ class Invoice
     static String phonePePin = null;
     static String gPayPin = null;
     static String paytmPin = null;
-    static double finalAmount = 0.0;
     static boolean paymentSuccess = false;
 
     
@@ -1619,36 +1625,55 @@ class Invoice
         
     }
 
+    // static String setUpiPin(String paymentMethod)
+    // {
+    //     String upiPin;
+    //     while(true)
+    //     {
+    //         System.out.print("Set your " + paymentMethod + " UPI PIN (4 or 6 digits): ");
+    //         upiPin = sc.next();
+    //         if(upiPin.length() == 4 || upiPin.length() == 6)
+    //         {
+    //             System.out.println(ConsoleColors.GREEN + "UPI PIN set successfully for " + paymentMethod + "!" + ConsoleColors.RESET);
+    //             break;
+                
+    //         }
+    //         else
+    //         {
+    //             System.out.println(ConsoleColors.RED + "Invalid PIN. UPI PIN must be 4 or 6 digits." + ConsoleColors.RESET);
+    //         }
+    //     }
+    //     return upiPin;
+    // }
+
     static String setUpiPin(String paymentMethod)
     {
         String upiPin;
-        while(true)
+        for (int i=1;i<=3;i++)
         {
             System.out.print("Set your " + paymentMethod + " UPI PIN (4 or 6 digits): ");
             upiPin = sc.next();
+
             if(upiPin.length() == 4 || upiPin.length() == 6)
             {
                 System.out.println(ConsoleColors.GREEN + "UPI PIN set successfully for " + paymentMethod + "!" + ConsoleColors.RESET);
-                return upiPin;
+                return upiPin; 
             }
             else
             {
-                System.out.println(ConsoleColors.RED + "Invalid PIN. UPI PIN must be 4 or 6 digits." + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "Invalid PIN format." + ConsoleColors.RESET);
+                int j = 3 - i;
+                if (j > 0) 
+                {
+                    System.out.println(ConsoleColors.YELLOW + j + " attempts left." + ConsoleColors.RESET);
+                } 
+                else 
+                {
+                    System.out.println(ConsoleColors.RED + "Too many attempts!" + ConsoleColors.RESET);
+                }
             }
         }
-    }
-
-    static void deductamount()
-    {
-        if (User.bankBalance >= finalAmount) 
-        {
-            User.bankBalance -= finalAmount;
-            paymentSuccess = true;
-        } 
-        else 
-        {
-            System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
-        }
+        return null; 
     }
     
     
@@ -1727,7 +1752,7 @@ class Invoice
         // Item 8
         if (item8 != null)
         {
-            double price8 = item4.getPrice() * qty8;
+            double price8 = item8.getPrice() * qty8;
             System.out.println(item8.getName() + " x" + qty8 + " = " + price8);
             total += price8;
         }
@@ -1812,8 +1837,16 @@ class Invoice
                 enteredPin = sc.next();
                 if (enteredPin.equals(phonePePin)) 
                 {
-                    deductamount();
-                    break;
+                    if (User.bankBalance >= finalAmount) 
+                    {
+                        User.bankBalance -= finalAmount;
+                        paymentSuccess = true;
+                    } 
+                    else 
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
+                        user.showUserMenu();
+                    }
                 } 
                 else 
                 {
@@ -1827,8 +1860,16 @@ class Invoice
                 enteredPin = sc.next();
                 if (enteredPin.equals(gPayPin)) 
                 {
-                    deductamount();
-                    break;
+                    if (User.bankBalance >= finalAmount) 
+                    {
+                        User.bankBalance -= finalAmount;
+                        paymentSuccess = true;
+                    } 
+                    else 
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
+                        user.showUserMenu();
+                    }
                 } 
                 else 
                 {
@@ -1842,8 +1883,16 @@ class Invoice
                 enteredPin = sc.next();
                 if (enteredPin.equals(paytmPin)) 
                 {
-                    deductamount();
-                    break;
+                    if (User.bankBalance >= finalAmount) 
+                    {
+                        User.bankBalance -= finalAmount;
+                        paymentSuccess = true;
+                    } 
+                    else 
+                    {
+                        System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
+                        user.showUserMenu();
+                    }
                 } 
                 else 
                 {
@@ -2326,7 +2375,6 @@ class Smartshelf
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
-            sc.nextLine();
 
             switch (choice) 
             {
