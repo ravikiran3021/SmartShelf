@@ -649,6 +649,12 @@ class User
                             {
                                 System.out.print("Enter quantity: ");
                                 groceryQty = sc.nextInt();
+                                if(groceryQty > grocerySelectedItem.getQuantity())
+                                {
+                                    System.out.println(ConsoleColors.RED + "Insufficient stock for " + grocerySelectedItem.getName() + ConsoleColors.RESET);
+                                    System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                    shopForItems();
+                                }
                             }
                             else if(ch1 == 'n' || ch1 == 'N')
                             {
@@ -808,6 +814,12 @@ class User
                             {
                                 System.out.print("Enter quantity: ");
                                 electronicsQty = sc.nextInt();
+                                if(electronicsQty > electronicsSelectedItem.getQuantity())
+                                {
+                                    System.out.println(ConsoleColors.RED + "Insufficient stock for " + electronicsSelectedItem.getName()  + ConsoleColors.RESET);
+                                    System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                    shopForItems();
+                                }
                             }
                             else if(ch1 == 'n' || ch1 == 'N')
                             {
@@ -969,6 +981,12 @@ class User
                             {
                                 System.out.print("Enter quantity: ");
                                 toyQty = sc.nextInt();
+                                if(toyQty > toysSelectedItem.getQuantity())
+                                {
+                                    System.out.println(ConsoleColors.RED + "Insufficient stock for " + toysSelectedItem.getName() + ConsoleColors.RESET);
+                                    System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Shop Menu...." + ConsoleColors.RESET);
+                                    shopForItems();   
+                                }
                             }
                             else if(ch1 == 'n' || ch1 == 'N')
                             {
@@ -1625,27 +1643,6 @@ class Invoice
         
     }
 
-    // static String setUpiPin(String paymentMethod)
-    // {
-    //     String upiPin;
-    //     while(true)
-    //     {
-    //         System.out.print("Set your " + paymentMethod + " UPI PIN (4 or 6 digits): ");
-    //         upiPin = sc.next();
-    //         if(upiPin.length() == 4 || upiPin.length() == 6)
-    //         {
-    //             System.out.println(ConsoleColors.GREEN + "UPI PIN set successfully for " + paymentMethod + "!" + ConsoleColors.RESET);
-    //             break;
-                
-    //         }
-    //         else
-    //         {
-    //             System.out.println(ConsoleColors.RED + "Invalid PIN. UPI PIN must be 4 or 6 digits." + ConsoleColors.RESET);
-    //         }
-    //     }
-    //     return upiPin;
-    // }
-
     static String setUpiPin(String paymentMethod)
     {
         String upiPin;
@@ -2000,7 +1997,8 @@ class Invoice
                 System.out.println("========================================");
             }
             System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);""
+            user.showUserMenu();
         }
         else
         {
@@ -2375,6 +2373,7 @@ class Smartshelf
             System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
+3
 
             switch (choice) 
             {
