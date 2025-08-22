@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,7 +20,7 @@ class ConsoleColors
 
 class Admin 
 {
-    Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     private String adminname = "admin";
     private String adminpassword = "admin123";
     private int otp; 
@@ -41,6 +41,22 @@ class Admin
     {
         
     }
+
+    static int InputMismatchException()
+    {
+        System.out.print("Enter your Choice : ");
+        try
+        { 
+            int choice = sc.nextInt();
+            System.out.println();
+            return choice;
+        }
+        catch(InputMismatchException e)
+        {
+            sc.nextLine();
+        }
+        return 0;
+    }
     
     void adminLogin() 
     {
@@ -53,7 +69,7 @@ class Admin
 
         if (adminusername.equals(adminname) && adminpass.equals(adminpassword)) 
         {
-            int choice;
+            int choice=0;
             do
             {
                 System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n<----- Welcome to Admin Dashboard ----->" + ConsoleColors.RESET);
@@ -62,9 +78,10 @@ class Admin
                 System.out.println("3. Put Shelves in Maintenance");
                 System.out.println("4. Remove Shelves from Maintenance");
                 System.out.println("5. Exit");
-                System.out.print("Enter option: ");
-                choice = sc.nextInt();
-                sc.nextLine(); // consume newline
+                choice = InputMismatchException();
+                // System.out.print("Enter option: ");
+                // choice = sc.nextInt();
+                //sc.nextLine(); // consume newline
                 switch (choice) 
                 {
                     case 1:
@@ -83,7 +100,7 @@ class Admin
                         System.out.println("Thank You....");
                         break;
                     default:
-                        System.out.println("Invalid Option. Please try again.");
+                        System.out.println(ConsoleColors.RED + "Invalid Input. Please try again." + ConsoleColors.RESET);
                 }
             }while(choice != 5);
         } 
@@ -307,31 +324,26 @@ class User
         if(password.length() < 8 )
         {
             System.out.println(ConsoleColors.RED + "Password must be at least 8 characters long." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Main Menu...." + ConsoleColors.RESET);
             return false;
         }
         if(!password.matches(".*[!@#$%^&*()].*"))
         {
             System.out.println(ConsoleColors.RED + "Password must contain at least one special character (!@#$%^&*())." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Main Menu...." + ConsoleColors.RESET);
             return false;
         }
         if(!password.matches(".*[0-9].*"))
         {
             System.out.println(ConsoleColors.RED + "Password must contain at least one digit." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Main Menu...." + ConsoleColors.RESET);
             return false;
         }
         if(!password.matches(".*[a-z].*"))
         {
             System.out.println(ConsoleColors.RED + "Password must contain at least one lowercase letter." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Main Menu...." + ConsoleColors.RESET);
             return false;
         }
         if(!password.matches(".*[A-Z].*"))
         {
             System.out.println(ConsoleColors.RED + "Password must contain at least one uppercase letter." + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.YELLOW + ConsoleColors.DIM + "Returning to Main Menu...." + ConsoleColors.RESET);
             return false;
         }
         return true;
@@ -521,7 +533,7 @@ class User
 
     void showUserMenu() 
     {
-        int choice;
+        int choice=0;
         do
         {
             System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- User Menu ---" + ConsoleColors.RESET);
@@ -532,9 +544,10 @@ class User
             System.out.println("5. Generate Invoice & Pay Bill");
             System.out.println("6. Modify / Remove Items from Cart");
             System.out.println("7. Logout");
-            System.out.print("Enter option: ");
-            choice = sc.nextInt();
-            sc.nextLine();
+            choice = admin.InputMismatchException();
+            // System.out.print("Enter option: ");
+            // choice = sc.nextInt();
+            // sc.nextLine();
 
             switch (choice) 
             {
@@ -561,7 +574,7 @@ class User
                     System.out.println("Logging out...");
                     return;
                 default:
-                    System.out.println(ConsoleColors.RED + "Invalid option. Please try again." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "Invalid Input. Please try again." + ConsoleColors.RESET);
             }
         }while(choice != 7);
     }
@@ -612,9 +625,10 @@ class User
         System.out.println("2. Electronics Shelf");
         System.out.println("3. Toys Shelf");
         System.out.println("4. Back to User Menu");
-        System.out.print("Enter your choice: ");
-        int choice = sc.nextInt();
-        sc.nextLine(); 
+        // System.out.print("Enter your choice: ");
+        // int choice = sc.nextInt();
+        // sc.nextLine(); 
+        int choice = Admin.InputMismatchException();
         switch (choice) 
         {
             case 1:
@@ -1119,7 +1133,7 @@ class User
                 showUserMenu();
                 break;
             default:
-                System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+                System.out.println(ConsoleColors.RED + "Invalid Input." + ConsoleColors.RESET);
         }
     }
 
@@ -1220,8 +1234,9 @@ class User
         }
         System.out.println("1. Update Quantity of " + selectedItem.getName());
         System.out.println("2. Remove " + selectedItem.getName() + " from cart");
-        System.out.print("Enter choice: ");
-        int choice = sc.nextInt();
+        // System.out.print("Enter choice: ");
+        // int choice = sc.nextInt();
+        int choice = Admin.InputMismatchException();
 
         if (choice == 1) 
         {
@@ -1340,7 +1355,7 @@ class User
         } 
         else 
         {
-            System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "Invalid Input." + ConsoleColors.RESET);
         }
     }
 
@@ -1361,8 +1376,9 @@ class User
         System.out.println("Enter the Item Number(1-8) you want to modify/remove");
         System.out.println("9. Clear Entire Cart");
         System.out.println("10. Back to User Menu");
-        System.out.print("Enter your choice: ");
-        int choice = sc.nextInt();
+        // System.out.print("Enter your choice: ");
+        // int choice = sc.nextInt();
+        int choice = Admin.InputMismatchException();
 
         if (choice >= 1 && choice <= 8) 
         {
@@ -1415,7 +1431,7 @@ class User
         } 
         else 
         {
-            System.out.println(ConsoleColors.RED + "Invalid choice." + ConsoleColors.RESET);
+            System.out.println(ConsoleColors.RED + "Invalid Input." + ConsoleColors.RESET);
             showUserMenu();
         }
     } 
@@ -1774,9 +1790,10 @@ class Invoice
         System.out.println("3. Paytm");
         System.out.println("4. Pay from Wallet");
         System.out.println("5. Cancel Payment");
-        System.out.print("Enter your choice: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        // System.out.print("Enter your choice: ");
+        // int choice = sc.nextInt();
+        // sc.nextLine();
+        int choice = Admin.InputMismatchException();
 
         double handlingFee = 0;
         String paymentMethod = "";
@@ -1997,7 +2014,7 @@ class Invoice
                 System.out.println("========================================");
             }
             System.out.println(ConsoleColors.GREEN + "Your Products will be delivered to your Address soon...!" + ConsoleColors.RESET);
-            System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);""
+            System.out.println(ConsoleColors.CYAN + "Thank you for shopping with us, " + user.savedName + "!" + ConsoleColors.RESET);
             user.showUserMenu();
         }
         else
@@ -2364,6 +2381,7 @@ class Smartshelf
         int choice;
         do
         {
+            System.out.println();
             System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.YELLOW + "   WELCOME TO " + ConsoleColors.GREEN + "SMARTSHELF" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
@@ -2371,10 +2389,7 @@ class Smartshelf
             System.out.println("2. User Signup");
             System.out.println("3. User Login");
             System.out.println("4. Exit");
-            System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
-3
-
+            choice = Admin.InputMismatchException();
             switch (choice) 
             {
                 case 1:
@@ -2390,7 +2405,7 @@ class Smartshelf
                     System.out.println(ConsoleColors.GREEN + ConsoleColors.BOLD + "Thank You for using SmartShelf!" + ConsoleColors.RESET);
                     return;
                 default:
-                    System.out.println(ConsoleColors.RED + "Invalid Option. Please try again." + ConsoleColors.RESET);
+                    System.out.println(ConsoleColors.RED + "Invalid Input. Please try again." + ConsoleColors.RESET);
             }
         }while(choice !=4);
     }
