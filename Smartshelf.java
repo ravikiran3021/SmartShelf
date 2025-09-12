@@ -2,6 +2,10 @@ import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+class Input
+{
+    public static final Scanner sc = new Scanner(System.in);
+}
 
 class ConsoleColors 
 {
@@ -20,7 +24,7 @@ class ConsoleColors
 
 class Admin 
 {
-    static Scanner sc = new Scanner(System.in);
+    static Scanner sc = Input.sc;
     private String adminname = "admin";
     private String adminpassword = "admin123";
     private int otp; 
@@ -232,6 +236,7 @@ class Admin
     void putShelvesInMaintenance() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Set Shelf Under Maintenance ---" + ConsoleColors.RESET);
+        sc.nextLine();
         System.out.print("Enter shelf name (GROCERY / ELECTRONICS / TOYS): ");
         String shelfName = sc.nextLine().trim().toUpperCase();
         if (shelfName.equals("GROCERY")) 
@@ -256,6 +261,7 @@ class Admin
     void removeShelvesFromMaintenance() 
     {
         System.out.println(ConsoleColors.BOLD + ConsoleColors.BLUE + "\n--- Remove Shelf Maintenance ---" + ConsoleColors.RESET);
+        sc.nextLine();
         System.out.print("Enter shelf name (GROCERY / ELECTRONICS / TOYS): ");
         String shelfName = sc.nextLine().trim().toUpperCase();
         if (shelfName.equals("GROCERY")) 
@@ -281,7 +287,7 @@ class Admin
 class User 
 {
     Admin admin = new Admin();
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = Input.sc;
     String savedUsername;
     String savedPassword;
     String savedMobile;
@@ -544,10 +550,9 @@ class User
             System.out.println("5. Generate Invoice & Pay Bill");
             System.out.println("6. Modify / Remove Items from Cart");
             System.out.println("7. Logout");
-            choice = admin.InputMismatchException();
-            // System.out.print("Enter option: ");
-            // choice = sc.nextInt();
-            // sc.nextLine();
+            System.out.print("Enter option: ");
+            choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) 
             {
@@ -625,21 +630,28 @@ class User
         System.out.println("2. Electronics Shelf");
         System.out.println("3. Toys Shelf");
         System.out.println("4. Back to User Menu");
-        // System.out.print("Enter your choice: ");
-        // int choice = sc.nextInt();
-        // sc.nextLine(); 
-        int choice = Admin.InputMismatchException();
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+        sc.nextLine(); 
         switch (choice) 
         {
             case 1:
                 groceryShelf.displayItems();
+                int groceryItemId=0;
                 if(groceryShelf.isUnderMaintenance())
                 {
                     System.out.println(ConsoleColors.RED + "Grocery Shelf is currently under maintenance. Please try again later." + ConsoleColors.RESET);
                     return;
                 }
                 System.out.print("Enter item ID to purchase : ");
-                int groceryItemId = sc.nextInt();
+                try
+                {
+                    groceryItemId = sc.nextInt();
+                }
+                catch(InputMismatchException e)
+                {
+                    sc.nextLine();
+                }
                 Item grocerySelectedItem = groceryShelf.selectItemById(groceryItemId);
                 if (grocerySelectedItem != null) 
                 {
@@ -1573,6 +1585,7 @@ class Item
     {
         soldCount += qty;
         totalItemsSold += qty;
+        autoRestock();
     }
 
     int getSoldCount() 
@@ -1623,7 +1636,7 @@ class Item
 
 class Invoice 
 {    
-    static Scanner sc = new Scanner(System.in);
+    static Scanner sc = Input.sc;
     static String phonePePin = null;
     static String gPayPin = null;
     static String paytmPin = null;
@@ -1952,42 +1965,42 @@ class Invoice
             if (item1 != null) 
             {
                 item1.finalizeSale(qty1);
-                item1.autoRestock();
+                
             }
             if (item2 != null) 
             {
                 item2.finalizeSale(qty2);
-                item2.autoRestock();
+                
             }
             if (item3 != null) 
             {
                 item3.finalizeSale(qty3);
-                item3.autoRestock();
+               
             }
             if (item4 != null) 
             {
                 item4.finalizeSale(qty4);
-                item4.autoRestock();
+                
             }
             if (item5 != null) 
             {
                 item5.finalizeSale(qty5);
-                item5.autoRestock();
+                
             }
             if (item6 != null) 
             {
                 item6.finalizeSale(qty6);
-                item6.autoRestock();
+              
             }
             if (item7 != null) 
             {
                 item7.finalizeSale(qty7);
-                item7.autoRestock();
+                
             }
             if (item8 != null) 
             {
                 item8.finalizeSale(qty8);
-                item8.autoRestock();
+                
             }
             
             user.clearCart();
@@ -2372,7 +2385,6 @@ class Smartshelf
 {
     public static void main(String[] args) 
     {
-        Scanner sc = new Scanner(System.in);
         GroceryShelf groceryShelf = new GroceryShelf();
         ElectronicsShelf electronicsShelf = new ElectronicsShelf();
         ToysShelf toysShelf = new ToysShelf();
