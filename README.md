@@ -20,11 +20,11 @@ SmartShelf is a console-based Java Mini Project that enables shop management sys
   
 ## Compile the program:
     
-    javac SmartShelf.java
+    javac Smartshelf.java
 
 ## Run the application:
 
-    java SmartShelf
+    java Smartshelf
 
 
 ## Technologies
