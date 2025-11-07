@@ -85,7 +85,6 @@ class Admin
                 choice = InputMismatchException();
                 // System.out.print("Enter option: ");
                 // choice = sc.nextInt();
-                //sc.nextLine(); // consume newline
                 switch (choice) 
                 {
                     case 1:
@@ -296,7 +295,6 @@ class User
     double walletBalance = 0.0;
     static double bankBalance = 20000;
 
-    // Cart items
     Item cartItem1 = null;
     Item cartItem2 = null;
     Item cartItem3 = null;
@@ -410,7 +408,7 @@ class User
         } 
         System.out.print("Enter mobile number: ");
         savedMobile = sc.next();
-        long mobileNumber = Long.parseLong(savedMobile); // Convert mobile number to long for validation
+        long mobileNumber = Long.parseLong(savedMobile); 
         if (mobileNumber > 5999999999l && mobileNumber < 100000000000l) 
         {
             admin.otpGenerate();
@@ -441,7 +439,6 @@ class User
             System.out.println(ConsoleColors.GREEN + "Login successful!" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.CYAN + "Welcome back, " + savedName + "!" + ConsoleColors.RESET);
             showUserMenu();
-            return;
         } 
         else if(!uname.equals(savedUsername) && pass.equals(savedPassword))
         {
@@ -1142,8 +1139,7 @@ class User
                 }
                 break;
             case 4:
-                showUserMenu();
-                break;
+                return;
             default:
                 System.out.println(ConsoleColors.RED + "Invalid Input." + ConsoleColors.RESET);
         }
@@ -1439,15 +1435,35 @@ class User
         else if (choice == 10) 
         {
             System.out.println(ConsoleColors.DIM + " Returning to User Menu..." + ConsoleColors.RESET);
-            showUserMenu();
+            return;
         } 
         else 
         {
             System.out.println(ConsoleColors.RED + "Invalid Input." + ConsoleColors.RESET);
-            showUserMenu();
+            return;
         }
     } 
     
+    void clearCartAfterPurchase() 
+    {
+        cartItem1 = null;
+        cartItem2 = null;
+        cartItem3 = null;
+        cartItem4 = null;
+        cartItem5 = null;
+        cartItem6 = null;
+        cartItem7 = null;
+        cartItem8 = null;
+        qty1 = 0;
+        qty2 = 0;
+        qty3 = 0;
+        qty4 = 0;
+        qty5 = 0;
+        qty6 = 0;
+        qty7 = 0;
+        qty8 = 0;
+    }
+
     void clearCart() 
     {
         if (cartItem1 != null) 
@@ -1504,7 +1520,7 @@ class User
 
 class Item 
 {
-    private static int nextId = 1; // Static counter for auto-incrementing ID
+    private static int nextId = 1; 
 
     private int id;
     private String name;
@@ -1513,21 +1529,19 @@ class Item
     private String expiry;
     private int restockprice;
 
-    // Static counters for all items
     private static int totalItemsSold = 0;
     private static int totalItemsInStock = 0;
     private int restockCount = 0;
     
     private int soldCount = 0;
-
-    // Constructor
+    
     Item(String name, double price, int quantity, String expiry, int restockprice) 
     {
-        this.id = nextId++; // Assign unique ID and increment the counter
+        this.id = nextId++;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        totalItemsInStock += quantity; // Add to total stock when item is created
+        totalItemsInStock += quantity; 
         this.expiry = expiry;
         this.restockprice = restockprice;
     }
@@ -1585,7 +1599,7 @@ class Item
     {
         soldCount += qty;
         totalItemsSold += qty;
-        autoRestock();
+        //autoRestock();
     }
 
     int getSoldCount() 
@@ -1872,14 +1886,14 @@ class Invoice
                     else 
                     {
                         System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
-                        user.showUserMenu();
+                        return;
                     }
                 } 
                 else 
                 {
                     System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
                     System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
-                    user.showUserMenu();
+                    return;
                 }
                 break;
             case 2: 
@@ -1895,14 +1909,14 @@ class Invoice
                     else 
                     {
                         System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
-                        user.showUserMenu();
+                        return;
                     }
                 } 
                 else 
                 {
                     System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
                     System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
-                    user.showUserMenu();
+                    return;
                 }
                 break;
             case 3: 
@@ -1918,14 +1932,14 @@ class Invoice
                     else 
                     {
                         System.out.println(ConsoleColors.RED + "Insufficient Bank Balance!" + ConsoleColors.RESET);
-                        user.showUserMenu();
+                        return;
                     }
                 } 
                 else 
                 {
                     System.out.println(ConsoleColors.RED + "Incorrect UPI PIN! Payment failed." + ConsoleColors.RESET);
                     System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
-                    user.showUserMenu();
+                    return;
 
                 }
                 break;
@@ -1939,7 +1953,7 @@ class Invoice
                 {
                     System.out.println(ConsoleColors.RED + "Insufficient Wallet Balance!" + ConsoleColors.RESET);
                     System.out.println(ConsoleColors.DIM + " Returning to User Menu...!" + ConsoleColors.RESET);
-                    user.showUserMenu();
+                    return;
                 }
                 break;
         }
@@ -1960,54 +1974,52 @@ class Invoice
                     System.out.print(ConsoleColors.CYAN + "\r"+"- Processing Your payment Please Wait..." + ConsoleColors.RESET);
             }
             System.out.println(ConsoleColors.GREEN + "\r"+"Payment Successful via " + paymentMethod + "!                 " + ConsoleColors.RESET);
+            
             AdminRevenue.addRevenue(total); 
-            
-            if (item1 != null) 
-            {
+        
+            if (item1 != null)
                 item1.finalizeSale(qty1);
-                
-            }
             if (item2 != null) 
-            {
                 item2.finalizeSale(qty2);
-                
-            }
-            if (item3 != null) 
-            {
+            if (item3 != null)
                 item3.finalizeSale(qty3);
-               
-            }
             if (item4 != null) 
-            {
                 item4.finalizeSale(qty4);
-                
-            }
             if (item5 != null) 
-            {
                 item5.finalizeSale(qty5);
-                
-            }
             if (item6 != null) 
-            {
                 item6.finalizeSale(qty6);
-              
-            }
             if (item7 != null) 
-            {
                 item7.finalizeSale(qty7);
-                
-            }
-            if (item8 != null) 
-            {
+            if (item8 != null)
                 item8.finalizeSale(qty8);
-                
-            }
+
+            if (item1 != null) 
+                item1.autoRestock();
+            if (item2 != null) 
+                item2.autoRestock();
+            if (item3 != null) 
+                item3.autoRestock();
+            if (item4 != null) 
+                item4.autoRestock();
+            if (item5 != null) 
+                item5.autoRestock();
+            if (item6 != null) 
+                item6.autoRestock();
+            if (item7 != null) 
+                item7.autoRestock();
+            if (item8 != null) 
+                item8.autoRestock();
             
-            user.clearCart();
+            user.clearCartAfterPurchase();
+            
+            // Get delivery address
             System.out.println("Enter your Address to deliver your purchased Products ");
             Invoice.takeAddress();
             System.out.println();
             System.out.println(ConsoleColors.GREEN + "Your Order has been placed successfully!" + ConsoleColors.RESET);
+            
+            // Show invoice
             System.out.println("Do you want to view your Invoice (y/n) ? ");
             char ch = sc.next().charAt(0);
             if (ch == 'y' || ch == 'Y')
@@ -2034,7 +2046,7 @@ class Invoice
         {
             System.out.println(ConsoleColors.RED + "Payment Failed!" + ConsoleColors.RESET);
         } 
-    } 
+    }
 }
 
 class AdminRevenue 
@@ -2397,6 +2409,7 @@ class Smartshelf
             System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.YELLOW + "   WELCOME TO " + ConsoleColors.GREEN + "SMARTSHELF" + ConsoleColors.RESET);
             System.out.println(ConsoleColors.CYAN + "=============================" + ConsoleColors.RESET);
+            System.out.println("Please select an option:");
             System.out.println("1. Admin Login");
             System.out.println("2. User Signup");
             System.out.println("3. User Login");
